@@ -49,7 +49,11 @@ public class InputParams implements Parcelable {
     /**
      * 输入框边框线条粗细
      */
-    public int strokeWidth = 1;
+    public int strokeWidth = 2;
+    /**
+     * 输入框边框线四周圆角
+     */
+    public int strokeRadius = 10;
     /**
      * 输入框边框线条颜色
      */

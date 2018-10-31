@@ -7,15 +7,17 @@ import android.view.ViewGroup;
 
 import com.wecent.smart.SmartParams;
 import com.wecent.smart.params.ButtonParams;
-import com.wecent.smart.resource.drawable.SelectorBtn;
+import com.wecent.smart.resource.drawable.ButtonDrawable;
+import com.wecent.smart.scale.ScaleHelper;
 import com.wecent.smart.widget.listener.ButtonView;
 import com.wecent.smart.widget.listener.OnCreateButtonListener;
 
 /**
- * 对话框确定按钮与取消的视图
- * Created by wecent on 2017/3/30.
+ * desc: 仿IOS SheetDialog弹框底部取消按钮 .
+ * author: wecent .
+ * date: 2017/3/17 .
  */
-class MultipleButton extends ScaleLinearLayout implements Controller.OnClickListener
+final class SmartSingleButton extends ScaleLinearLayout implements Controller.OnClickListener
         , ButtonView {
 
     private SmartParams mSmartParams;
@@ -26,14 +28,14 @@ class MultipleButton extends ScaleLinearLayout implements Controller.OnClickList
     private ScaleTextView mPositiveButton;
     private ScaleTextView mNeutralButton;
 
-    public MultipleButton(Context context, SmartParams params) {
+    public SmartSingleButton(Context context, SmartParams params) {
         super(context);
         init(params);
     }
 
     private void init(SmartParams params) {
-        setOrientation(HORIZONTAL);
         mSmartParams = params;
+
         mNegativeParams = params.negativeParams;
         mPositiveParams = params.positiveParams;
         mNeutralParams = params.neutralParams;
@@ -60,7 +62,6 @@ class MultipleButton extends ScaleLinearLayout implements Controller.OnClickList
             backgroundNeutral = mNeutralParams.backgroundColor != 0
                     ? mNeutralParams.backgroundColor : params.dialogParams.backgroundColor;
 
-
         }
         if (mPositiveParams != null) {
             if (mNeutralButton != null || mNegativeButton != null) {
@@ -76,41 +77,45 @@ class MultipleButton extends ScaleLinearLayout implements Controller.OnClickList
 
         if (mNegativeButton != null && mNegativeParams != null) {
             //右边没按钮则右下是圆角
-            SelectorBtn selectorBtn = new SelectorBtn(backgroundNegative
+            int rightRadius = (mNeutralButton == null && mPositiveButton == null) ? radius : 0;
+            ButtonDrawable buttonDrawable = new ButtonDrawable(backgroundNegative
                     , mNegativeParams.backgroundColorPress != 0
                     ? mNegativeParams.backgroundColorPress : params.dialogParams.backgroundColorPress
-                    , 0, 0, (mNeutralButton == null && mPositiveButton == null) ? radius : 0, radius);
+                    , radius, rightRadius, rightRadius, radius);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                mNegativeButton.setBackground(selectorBtn);
+                mNegativeButton.setBackground(buttonDrawable);
             } else {
-                mNegativeButton.setBackgroundDrawable(selectorBtn);
+                mNegativeButton.setBackgroundDrawable(buttonDrawable);
             }
         }
         if (mPositiveButton != null && mPositiveParams != null) {
             //左边没按钮则左下是圆角
-            SelectorBtn selectorBtn = new SelectorBtn(backgroundPositive
+            int leftRadius = (mNegativeButton == null && mNeutralButton == null) ? radius : 0;
+            ButtonDrawable buttonDrawable = new ButtonDrawable(backgroundPositive
                     , mPositiveParams.backgroundColorPress != 0
                     ? mPositiveParams.backgroundColorPress : params.dialogParams.backgroundColorPress
-                    , 0, 0, radius, (mNegativeButton == null && mNeutralButton == null) ? radius : 0);
+                    , leftRadius, radius, radius, leftRadius);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                mPositiveButton.setBackground(selectorBtn);
+                mPositiveButton.setBackground(buttonDrawable);
             } else {
-                mPositiveButton.setBackgroundDrawable(selectorBtn);
+                mPositiveButton.setBackgroundDrawable(buttonDrawable);
             }
         }
         if (mNeutralButton != null && mNeutralParams != null) {
             //左右没按钮则左下右下是圆角
-            SelectorBtn selectorBtn = new SelectorBtn(backgroundNeutral
+            int leftRadius = mNegativeButton == null ? radius : 0;
+            int rightRadius = mPositiveButton == null ? radius : 0;
+            ButtonDrawable buttonDrawable = new ButtonDrawable(backgroundNeutral
                     , mNeutralParams.backgroundColorPress != 0
                     ? mNeutralParams.backgroundColorPress : params.dialogParams.backgroundColorPress
-                    , 0, 0, mPositiveButton == null ? radius : 0
-                    , mNegativeButton == null ? radius : 0);
+                    , leftRadius, rightRadius, rightRadius, leftRadius);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                mNeutralButton.setBackground(selectorBtn);
+                mNeutralButton.setBackground(buttonDrawable);
             } else {
-                mNeutralButton.setBackgroundDrawable(selectorBtn);
+                mNeutralButton.setBackgroundDrawable(buttonDrawable);
             }
         }
+
         OnCreateButtonListener createButtonListener = mSmartParams.createButtonListener;
         if (createButtonListener != null) {
             createButtonListener.onCreateButton(mNegativeButton, mPositiveButton, mNeutralButton);
@@ -119,29 +124,44 @@ class MultipleButton extends ScaleLinearLayout implements Controller.OnClickList
 
     private void createNegative() {
         mNegativeButton = new ScaleTextView(getContext());
-        mNegativeButton.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        //设置列表与按钮之间的上距离
+        if (mNegativeParams.topMargin > 0) {
+            params.topMargin = ScaleHelper.scaleValue(mNegativeParams.topMargin);
+        }
+        mNegativeButton.setLayoutParams(params);
         handleNegativeStyle();
         addView(mNegativeButton);
     }
 
     private void createDivider() {
-        DividerView dividerView = new DividerView(getContext());
-        addView(dividerView);
+        SmartDividerView smartDividerView = new SmartDividerView(getContext());
+        addView(smartDividerView);
     }
 
     private void createNeutral() {
         mNeutralButton = new ScaleTextView(getContext());
-        mNeutralButton.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        //设置列表与按钮之间的上距离
+        if (mNeutralParams.topMargin > 0) {
+            params.topMargin = ScaleHelper.scaleValue(mNeutralParams.topMargin);
+        }
+        mNeutralButton.setLayoutParams(params);
         handleNeutralStyle();
         addView(mNeutralButton);
     }
 
     private void createPositive() {
         mPositiveButton = new ScaleTextView(getContext());
-        mPositiveButton.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+        //设置列表与按钮之间的上距离
+        if (mPositiveParams.topMargin > 0) {
+            params.topMargin = ScaleHelper.scaleValue(mPositiveParams.topMargin);
+        }
+        mPositiveButton.setLayoutParams(params);
         handlePositiveStyle();
         addView(mPositiveButton);
     }
@@ -176,28 +196,25 @@ class MultipleButton extends ScaleLinearLayout implements Controller.OnClickList
         mPositiveButton.setTypeface(mPositiveButton.getTypeface(), mPositiveParams.styleText);
     }
 
-    @Override
     public void regNegativeListener(OnClickListener onClickListener) {
         if (mNegativeButton != null) {
             mNegativeButton.setOnClickListener(onClickListener);
         }
     }
 
-    @Override
     public void regPositiveListener(OnClickListener onClickListener) {
         if (mPositiveButton != null) {
             mPositiveButton.setOnClickListener(onClickListener);
         }
     }
 
-    @Override
     public void regNeutralListener(OnClickListener onClickListener) {
         if (mNeutralButton != null) {
             mNeutralButton.setOnClickListener(onClickListener);
         }
     }
 
-    @Override
+
     public void refreshText() {
         if (mNegativeParams == null || mNegativeButton == null) return;
         post(new Runnable() {
@@ -250,5 +267,6 @@ class MultipleButton extends ScaleLinearLayout implements Controller.OnClickList
                 mSmartParams.clickNeutralListener.onClick(mNeutralButton);
             }
         }
+
     }
 }

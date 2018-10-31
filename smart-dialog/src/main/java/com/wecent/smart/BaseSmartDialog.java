@@ -24,7 +24,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
-import com.wecent.smart.resource.drawable.CircleDrawable;
+import com.wecent.smart.resource.drawable.SmartDrawable;
 import com.wecent.smart.resource.values.CircleDimen;
 import com.wecent.smart.scale.ScaleHelper;
 
@@ -69,9 +69,9 @@ public abstract class BaseSmartDialog extends DialogFragment {
             savedInstanceState) {
         View view = createView(getContext(), inflater, container);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            view.setBackground(new CircleDrawable(mBackgroundColor, mRadius));
+            view.setBackground(new SmartDrawable(mBackgroundColor, mRadius));
         } else {
-            view.setBackgroundDrawable(new CircleDrawable(mBackgroundColor, mRadius));
+            view.setBackgroundDrawable(new SmartDrawable(mBackgroundColor, mRadius));
         }
         view.setAlpha(mAlpha);
         return view;

@@ -6,14 +6,13 @@ import android.graphics.drawable.ShapeDrawable;
  * 圆角
  * Created by wecent on 2017/3/29.
  */
-public class CircleDrawable extends ShapeDrawable {
+public class SmartDrawable extends ShapeDrawable {
 
-    public CircleDrawable(int backgroundColor, int radius) {
+    public SmartDrawable(int backgroundColor, int radius) {
         this(backgroundColor, radius, radius, radius, radius);
     }
 
-    public CircleDrawable(int backgroundColor, int leftTopRadius, int rightTopRadius
-            , int rightBottomRadius, int leftBottomRadius) {
+    public SmartDrawable(int backgroundColor, int leftTopRadius, int rightTopRadius, int rightBottomRadius, int leftBottomRadius) {
         getPaint().setColor(backgroundColor);//内部填充颜色
         //圆角半径
         setShape(DrawableHelper.getRoundRectShape(leftTopRadius, rightTopRadius, rightBottomRadius, leftBottomRadius));

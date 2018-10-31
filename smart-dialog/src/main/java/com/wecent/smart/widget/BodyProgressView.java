@@ -14,7 +14,7 @@ import com.wecent.smart.params.ButtonParams;
 import com.wecent.smart.params.DialogParams;
 import com.wecent.smart.params.ProgressParams;
 import com.wecent.smart.params.TitleParams;
-import com.wecent.smart.resource.drawable.CircleDrawable;
+import com.wecent.smart.resource.drawable.SmartDrawable;
 import com.wecent.smart.resource.values.CircleDimen;
 import com.wecent.smart.widget.listener.OnCreateProgressListener;
 
@@ -51,29 +51,29 @@ final class BodyProgressView extends ScaleLinearLayout {
         //有标题没按钮则底部圆角
         if (titleParams != null && negativeParams == null && positiveParams == null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                setBackground(new CircleDrawable(backgroundColor, 0, 0, dialogParams.radius,
+                setBackground(new SmartDrawable(backgroundColor, 0, 0, dialogParams.radius,
                         dialogParams.radius));
             } else {
-                setBackgroundDrawable(new CircleDrawable(backgroundColor, 0, 0, dialogParams.radius,
+                setBackgroundDrawable(new SmartDrawable(backgroundColor, 0, 0, dialogParams.radius,
                         dialogParams.radius));
             }
         }
         //没标题有按钮则顶部圆角
         else if (titleParams == null && (negativeParams != null || positiveParams != null)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                setBackground(new CircleDrawable(backgroundColor, dialogParams.radius, dialogParams
+                setBackground(new SmartDrawable(backgroundColor, dialogParams.radius, dialogParams
                         .radius, 0, 0));
             } else {
-                setBackgroundDrawable(new CircleDrawable(backgroundColor, dialogParams.radius,
+                setBackgroundDrawable(new SmartDrawable(backgroundColor, dialogParams.radius,
                         dialogParams.radius, 0, 0));
             }
         }
         //没标题没按钮则全部圆角
         else if (titleParams == null && negativeParams == null && positiveParams == null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                setBackground(new CircleDrawable(backgroundColor, dialogParams.radius));
+                setBackground(new SmartDrawable(backgroundColor, dialogParams.radius));
             } else {
-                setBackgroundDrawable(new CircleDrawable(backgroundColor, dialogParams.radius));
+                setBackgroundDrawable(new SmartDrawable(backgroundColor, dialogParams.radius));
             }
         }
         //有标题有按钮则不用考虑圆角

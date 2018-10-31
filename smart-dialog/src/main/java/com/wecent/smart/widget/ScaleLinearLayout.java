@@ -5,7 +5,6 @@ import android.widget.LinearLayout;
 
 import com.wecent.smart.scale.ScaleLayoutConfig;
 
-
 /**
  * Created by wecent on 2017/3/29.
  */

@@ -8,9 +8,9 @@ import android.graphics.drawable.StateListDrawable;
  * Created by wecent on 2017/3/30.
  */
 
-public class SelectorBtn extends StateListDrawable {
+public class ButtonDrawable extends StateListDrawable {
 
-    public SelectorBtn(int backgroundColor, int backgroundColorPress, int leftTopRadius
+    public ButtonDrawable(int backgroundColor, int backgroundColorPress, int leftTopRadius
             , int rightTopRadius, int rightBottomRadius, int leftBottomRadius) {
         //按下
         ShapeDrawable drawablePress = new ShapeDrawable(DrawableHelper.getRoundRectShape(

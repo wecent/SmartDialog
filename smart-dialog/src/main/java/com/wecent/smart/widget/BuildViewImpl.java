@@ -18,13 +18,13 @@ public final class BuildViewImpl implements BuildView {
     private Context mContext;
     private SmartParams mParams;
     private LinearLayout mRoot;
-    private TitleView mTitleView;
+    private SmartTitleView mSmartTitleView;
     private BodyTextView mBodyTextView;
     private ItemsView mItemsView;
     private BodyProgressView mBodyProgressView;
     private BodyLottieView mBodyLottieView;
     private InputView mBodyInputView;
-    private ItemsButton mItemsButton;
+    private SmartSingleButton mSmartSingleButton;
     private ButtonView mMultipleButton;
     private View mCustomView;
 
@@ -44,11 +44,11 @@ public final class BuildViewImpl implements BuildView {
 
     @Override
     public View buildTitle() {
-        if (mTitleView == null) {
-            mTitleView = new TitleView(mContext, mParams);
-            mRoot.addView(mTitleView);
+        if (mSmartTitleView == null) {
+            mSmartTitleView = new SmartTitleView(mContext, mParams);
+            mRoot.addView(mSmartTitleView);
         }
-        return mTitleView;
+        return mSmartTitleView;
     }
 
     @Override
@@ -79,10 +79,11 @@ public final class BuildViewImpl implements BuildView {
     @Override
     public ItemsView buildItems() {
         if (mItemsView == null) {
+//            if (mParams.itemListener != null || mParams.itemsParams.adapter != null)
+//                mItemsView = new BodyItemsView(mContext, mParams);
+//            else
             if (mParams.itemListener != null || mParams.itemsParams.adapter != null)
                 mItemsView = new BodyItemsView(mContext, mParams);
-            else if (mParams.rvItemListener != null || mParams.itemsParams.adapterRv != null)
-                mItemsView = new BodyItemsRvView(mContext, mParams);
 
             mRoot.addView(mItemsView.getView());
         }
@@ -91,11 +92,11 @@ public final class BuildViewImpl implements BuildView {
 
     @Override
     public ButtonView buildItemsButton() {
-        if (mItemsButton == null) {
-            mItemsButton = new ItemsButton(mContext, mParams);
-            mRoot.addView(mItemsButton);
+        if (mSmartSingleButton == null) {
+            mSmartSingleButton = new SmartSingleButton(mContext, mParams);
+            mRoot.addView(mSmartSingleButton);
         }
-        return mItemsButton;
+        return mSmartSingleButton;
     }
 
     @Override
@@ -140,11 +141,11 @@ public final class BuildViewImpl implements BuildView {
     @Override
     public ButtonView buildMultipleButton() {
         if (mMultipleButton == null) {
-            mMultipleButton = new MultipleButton(mContext, mParams);
+            mMultipleButton = new SmartMultipleButton(mContext, mParams);
             if (!mMultipleButton.isEmpty()) {
-                DividerView dividerView = new DividerView(mContext);
-                dividerView.setVertical();
-                mRoot.addView(dividerView);
+                SmartDividerView smartDividerView = new SmartDividerView(mContext);
+                smartDividerView.setVertical();
+                mRoot.addView(smartDividerView);
             }
             mRoot.addView(mMultipleButton.getView());
         }

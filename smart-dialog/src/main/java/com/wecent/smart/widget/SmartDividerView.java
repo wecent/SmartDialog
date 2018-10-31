@@ -10,8 +10,8 @@ import com.wecent.smart.resource.values.CircleColor;
  * 分隔线，默认垂直
  * Created by wecent on 2017/3/30.
  */
-final class DividerView extends View {
-    public DividerView(Context context) {
+final class SmartDividerView extends View {
+    public SmartDividerView(Context context) {
         super(context);
         init();
     }

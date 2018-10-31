@@ -12,8 +12,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 
 import com.wecent.smart.callback.ConfigButton;
 import com.wecent.smart.callback.ConfigDialog;
@@ -42,10 +40,12 @@ import com.wecent.smart.widget.listener.OnCreateMessageListener;
 import com.wecent.smart.widget.listener.OnCreateTitleListener;
 import com.wecent.smart.widget.listener.OnInputClickListener;
 import com.wecent.smart.widget.listener.OnInputCounterChangeListener;
-import com.wecent.smart.widget.listener.OnRvItemClickListener;
+import com.wecent.smart.widget.listener.OnItemClickListener;
 
 /**
- * Created by wecent on 2017/3/29.
+ * desc: .
+ * author: wecent .
+ * date: 2017/3/30 .
  */
 
 public final class SmartDialog {
@@ -72,11 +72,11 @@ public final class SmartDialog {
         if (activity == null) {
             throw new NullPointerException("please call constructor Builder(FragmentActivity)");
         }
-        mDialog.show(activity.getSupportFragmentManager(), "circleDialog");
+        mDialog.show(activity.getSupportFragmentManager(), "smartDialog");
     }
 
     public void show(FragmentManager manager) {
-        mDialog.show(manager, "circleDialog");
+        mDialog.show(manager, "smartDialog");
     }
 
     public static class Builder {
@@ -165,26 +165,56 @@ public final class SmartDialog {
             return this;
         }
 
+        /**
+         * 对话框消失的接口回调
+         *
+         * @param listener
+         * @return
+         */
         public Builder setOnDismissListener(DialogInterface.OnDismissListener listener) {
             mSmartParams.dismissListener = listener;
             return this;
         }
 
+        /**
+         * 对话框取消的接口回调
+         *
+         * @param listener
+         * @return
+         */
         public Builder setOnCancelListener(DialogInterface.OnCancelListener listener) {
             mSmartParams.cancelListener = listener;
             return this;
         }
 
+        /**
+         * 对话框显示的接口回调
+         *
+         * @param listener
+         * @return
+         */
         public Builder setOnShowListener(DialogInterface.OnShowListener listener) {
             mSmartParams.showListener = listener;
             return this;
         }
 
+        /**
+         * 对话框默认属性
+         *
+         * @param configDialog
+         * @return
+         */
         public Builder configDialog(@NonNull ConfigDialog configDialog) {
             configDialog.onConfig(mSmartParams.dialogParams);
             return this;
         }
 
+        /**
+         * 设置对话框标题
+         *
+         * @param text
+         * @return
+         */
         public Builder setTitle(@NonNull String text) {
             newTitleParams();
             mSmartParams.titleParams.text = text;
@@ -196,29 +226,59 @@ public final class SmartDialog {
                 mSmartParams.titleParams = new TitleParams();
         }
 
+        /**
+         * 设置对话框标题图标
+         *
+         * @param icon
+         * @return
+         */
         public Builder setTitleIcon(@DrawableRes int icon) {
             newTitleParams();
             mSmartParams.titleParams.icon = icon;
             return this;
         }
 
+        /**
+         * 设置对话框标题颜色
+         *
+         * @param color
+         * @return
+         */
         public Builder setTitleColor(@ColorInt int color) {
             newTitleParams();
             mSmartParams.titleParams.textColor = color;
             return this;
         }
 
+        /**
+         * 对话框标题文本属性
+         *
+         * @param configTitle
+         * @return
+         */
         public Builder configTitle(@NonNull ConfigTitle configTitle) {
             newTitleParams();
             configTitle.onConfig(mSmartParams.titleParams);
             return this;
         }
 
+        /**
+         * 对话框标题更新内容接口回调
+         *
+         * @param listener
+         * @return
+         */
         public Builder setOnCreateTitleListener(@NonNull OnCreateTitleListener listener) {
             mSmartParams.createTitleListener = listener;
             return this;
         }
 
+        /**
+         * 设置对话框副标题
+         *
+         * @param text
+         * @return
+         */
         public Builder setSubtitle(@NonNull String text) {
             newSubtitleParams();
             mSmartParams.subtitleParams.text = text;
@@ -230,12 +290,24 @@ public final class SmartDialog {
                 mSmartParams.subtitleParams = new SubtitleParams();
         }
 
+        /**
+         * 设置对话框副标题颜色
+         *
+         * @param color
+         * @return
+         */
         public Builder setSubtitleColor(@ColorInt int color) {
             newSubtitleParams();
             mSmartParams.subtitleParams.textColor = color;
             return this;
         }
 
+        /**
+         * 对话框副标题文本属性
+         *
+         * @param configSubtitle
+         * @return
+         */
         public Builder configSubtitle(@NonNull ConfigSubtitle configSubtitle) {
             newSubtitleParams();
             configSubtitle.onConfig(mSmartParams.subtitleParams);
@@ -243,7 +315,7 @@ public final class SmartDialog {
         }
 
         /**
-         * 设置文本内容
+         * 设置对话框消息文本内容
          *
          * @param message
          * @return
@@ -255,7 +327,7 @@ public final class SmartDialog {
         }
 
         /**
-         * 设置文本颜色
+         * 设置对话框消息文本颜色
          *
          * @param color
          * @return
@@ -267,7 +339,7 @@ public final class SmartDialog {
         }
 
         /**
-         * 设置文本属性
+         * 对话框消息文本属性
          *
          * @param configMessage
          * @return
@@ -286,18 +358,24 @@ public final class SmartDialog {
                 mSmartParams.messageParams = new MessageParams();
         }
 
+        /**
+         * 对话框消息更新内容接口回调
+         *
+         * @param listener
+         * @return
+         */
         public Builder setOnCreateMessageListener(OnCreateMessageListener listener) {
             mSmartParams.createMessageListener = listener;
             return this;
         }
 
-        public Builder setItems(@NonNull Object items, AdapterView.OnItemClickListener listener) {
-            newItemsParams();
-            ItemsParams params = mSmartParams.itemsParams;
-            params.items = items;
-            mSmartParams.itemListener = listener;
-            return this;
-        }
+//        public Builder setItems(@NonNull Object items, AdapterView.OnItemClickListener listener) {
+//            newItemsParams();
+//            ItemsParams params = mSmartParams.itemsParams;
+//            params.items = items;
+//            mSmartParams.itemListener = listener;
+//            return this;
+//        }
 
         private void newItemsParams() {
             //设置列表特殊的参数
@@ -313,50 +391,45 @@ public final class SmartDialog {
                 mSmartParams.itemsParams = new ItemsParams();
         }
 
-        public Builder setItems(@NonNull BaseAdapter adapter
-                , AdapterView.OnItemClickListener listener) {
+//        public Builder setItems(@NonNull BaseAdapter adapter, AdapterView.OnItemClickListener listener) {
+//            newItemsParams();
+//            ItemsParams params = mSmartParams.itemsParams;
+//            params.adapter = adapter;
+//            mSmartParams.itemListener = listener;
+//            return this;
+//        }
+
+        public Builder setItems(@NonNull Object items, OnItemClickListener listener) {
             newItemsParams();
             ItemsParams params = mSmartParams.itemsParams;
-            params.adapter = adapter;
+            params.items = items;
             mSmartParams.itemListener = listener;
             return this;
         }
 
-        public Builder setItems(@NonNull Object items, OnRvItemClickListener listener) {
-            newItemsParams();
-            ItemsParams params = mSmartParams.itemsParams;
-            params.items = items;
-            mSmartParams.rvItemListener = listener;
-            return this;
-        }
-
-        public Builder setItems(@NonNull Object items, RecyclerView.LayoutManager layoutManager
-                , OnRvItemClickListener listener) {
+        public Builder setItems(@NonNull Object items, RecyclerView.LayoutManager layoutManager, OnItemClickListener listener) {
             newItemsParams();
             ItemsParams params = mSmartParams.itemsParams;
             params.items = items;
             params.layoutManager = layoutManager;
-            mSmartParams.rvItemListener = listener;
+            mSmartParams.itemListener = listener;
             return this;
         }
 
-        public Builder setItems(@NonNull RecyclerView.Adapter adapter
-                , RecyclerView.LayoutManager layoutManager) {
+        public Builder setItems(@NonNull RecyclerView.Adapter adapter, RecyclerView.LayoutManager layoutManager) {
             newItemsParams();
             ItemsParams params = mSmartParams.itemsParams;
             params.layoutManager = layoutManager;
-            params.adapterRv = adapter;
+            params.adapter = adapter;
             return this;
         }
 
-        public Builder setItems(@NonNull RecyclerView.Adapter adapter
-                , RecyclerView.LayoutManager layoutManager
-                , RecyclerView.ItemDecoration itemDecoration) {
+        public Builder setItems(@NonNull RecyclerView.Adapter adapter, RecyclerView.LayoutManager layoutManager, RecyclerView.ItemDecoration itemDecoration) {
             newItemsParams();
             ItemsParams params = mSmartParams.itemsParams;
             params.layoutManager = layoutManager;
             params.itemDecoration = itemDecoration;
-            params.adapterRv = adapter;
+            params.adapter = adapter;
             return this;
         }
 

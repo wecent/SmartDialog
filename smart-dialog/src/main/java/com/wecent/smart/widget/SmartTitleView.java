@@ -10,29 +10,28 @@ import com.wecent.smart.SmartParams;
 import com.wecent.smart.params.DialogParams;
 import com.wecent.smart.params.SubtitleParams;
 import com.wecent.smart.params.TitleParams;
-import com.wecent.smart.resource.drawable.CircleDrawable;
+import com.wecent.smart.resource.drawable.SmartDrawable;
 import com.wecent.smart.widget.listener.OnCreateTitleListener;
 
 /**
- * 对话框标题
- * Created by wecent on 2017/3/29.
+ * desc: 仿IOS AlertDialog标题（包括标题和副标题） .
+ * author: wecent .
+ * date: 2017/3/27 .
  */
-final class TitleView extends ScaleLinearLayout {
+final class SmartTitleView extends ScaleLinearLayout {
 
-    public TitleView(Context context, SmartParams params) {
+    public SmartTitleView(Context context, SmartParams params) {
         super(context);
         init(params);
     }
 
     private void init(SmartParams params) {
-
         setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         setOrientation(LinearLayout.VERTICAL);
 
         DialogParams dialogParams = params.dialogParams;
         TitleParams titleParams = params.titleParams;
         SubtitleParams subtitleParams = params.subtitleParams;
-
 
         ScaleRelativeLayout titleLayout = new ScaleRelativeLayout(getContext());
         titleLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT
@@ -71,25 +70,25 @@ final class TitleView extends ScaleLinearLayout {
         addView(titleLayout);
 
         //副标题
-        ScaleTextView tvSubTitle = null;
+        ScaleTextView tvSubtitle = null;
         if (subtitleParams != null) {
-            tvSubTitle = new ScaleTextView(getContext());
-            setSubTitleBg(tvSubTitle, subtitleParams.backgroundColor, dialogParams.backgroundColor);
-            tvSubTitle.setGravity(subtitleParams.gravity);
+            tvSubtitle = new ScaleTextView(getContext());
+            setSubTitleBg(tvSubtitle, subtitleParams.backgroundColor, dialogParams.backgroundColor);
+            tvSubtitle.setGravity(subtitleParams.gravity);
             if (subtitleParams.height != 0)
-                tvSubTitle.setHeight(subtitleParams.height);
-            tvSubTitle.setTextColor(subtitleParams.textColor);
-            tvSubTitle.setTextSize(subtitleParams.textSize);
-            tvSubTitle.setText(subtitleParams.text);
+                tvSubtitle.setHeight(subtitleParams.height);
+            tvSubtitle.setTextColor(subtitleParams.textColor);
+            tvSubtitle.setTextSize(subtitleParams.textSize);
+            tvSubtitle.setText(subtitleParams.text);
             int[] padding = subtitleParams.padding;
             if (padding != null)
-                tvSubTitle.setAutoPadding(padding[0], padding[1], padding[2], padding[3]);
-            tvSubTitle.setTypeface(tvSubTitle.getTypeface(), subtitleParams.styleText);
-            addView(tvSubTitle);
+                tvSubtitle.setAutoPadding(padding[0], padding[1], padding[2], padding[3]);
+            tvSubtitle.setTypeface(tvSubtitle.getTypeface(), subtitleParams.styleText);
+            addView(tvSubtitle);
         }
         OnCreateTitleListener createTitleListener = params.createTitleListener;
         if (createTitleListener != null) {
-            createTitleListener.onCreateTitle(ivTitleIcon, tvTitle, tvSubTitle);
+            createTitleListener.onCreateTitle(ivTitleIcon, tvTitle, tvSubtitle);
         }
     }
 
@@ -101,17 +100,17 @@ final class TitleView extends ScaleLinearLayout {
         if (params.messageParams != null || params.itemsParams != null || params.progressParams != null
                 || params.inputParams != null || params.bodyViewId != 0 || params.lottieParams != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                tv.setBackground(new CircleDrawable(bg, radius, radius, 0, 0));
+                tv.setBackground(new SmartDrawable(bg, radius, radius, 0, 0));
             } else {
-                tv.setBackgroundDrawable(new CircleDrawable(bg, radius, radius, 0, 0));
+                tv.setBackgroundDrawable(new SmartDrawable(bg, radius, radius, 0, 0));
             }
         }
         //无内容则全部圆角
         else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                tv.setBackground(new CircleDrawable(bg, radius));
+                tv.setBackground(new SmartDrawable(bg, radius));
             } else {
-                tv.setBackgroundDrawable(new CircleDrawable(bg, radius));
+                tv.setBackgroundDrawable(new SmartDrawable(bg, radius));
             }
         }
     }
@@ -121,9 +120,9 @@ final class TitleView extends ScaleLinearLayout {
         int bg = tbg != 0 ? tbg : dbg;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            tv.setBackground(new CircleDrawable(bg, 0));
+            tv.setBackground(new SmartDrawable(bg, 0));
         } else {
-            tv.setBackgroundDrawable(new CircleDrawable(bg, 0));
+            tv.setBackgroundDrawable(new SmartDrawable(bg, 0));
         }
     }
 }

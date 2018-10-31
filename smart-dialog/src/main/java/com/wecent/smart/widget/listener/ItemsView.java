@@ -10,9 +10,7 @@ import android.widget.AdapterView;
 public interface ItemsView {
     void refreshItems();
 
-    void regOnItemClickListener(AdapterView.OnItemClickListener listener);
-
-    void regOnItemClickListener(OnRvItemClickListener listener);
+    void regOnItemClickListener(OnItemClickListener listener);
 
     View getView();
 }

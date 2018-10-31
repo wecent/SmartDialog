@@ -60,13 +60,9 @@ public class ItemsParams implements Parcelable {
      */
     public boolean isManualClose;
     /**
-     * ListView 适配器
-     */
-    public BaseAdapter adapter;
-    /**
      * RecyclerView 适配器
      */
-    public RecyclerView.Adapter adapterRv;
+    public RecyclerView.Adapter adapter;
     /**
      * RecyclerView 布局管理
      */

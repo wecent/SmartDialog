@@ -14,7 +14,7 @@ import com.wecent.smart.SmartParams;
 import com.wecent.smart.widget.listener.ButtonView;
 import com.wecent.smart.widget.listener.InputView;
 import com.wecent.smart.widget.listener.ItemsView;
-import com.wecent.smart.widget.listener.OnRvItemClickListener;
+import com.wecent.smart.widget.listener.OnItemClickListener;
 
 /**
  * Created by wecent on 2017/3/29.
@@ -35,6 +35,7 @@ public class Controller {
      * The identifier for the neutral button.
      */
     public static final int BUTTON_NEUTRAL = -4;
+
     private Context mContext;
     private SmartParams mParams;
     private BuildView mCreateView;
@@ -65,7 +66,7 @@ public class Controller {
     }
 
     private void applyBody() {
-        //自定义内容视图
+        // 自定义
         if (mParams.bodyViewId != 0) {
             View bodyView = mCreateView.buildCustom();
             ButtonView buttonView = mCreateView.buildMultipleButton();
@@ -73,26 +74,27 @@ public class Controller {
             if (mParams.createBodyViewListener != null)
                 mParams.createBodyViewListener.onCreateBodyView(bodyView);
         }
-        //文本
+        // 消息
         else if (mParams.messageParams != null) {
             mCreateView.buildText();
             ButtonView buttonView = mCreateView.buildMultipleButton();
             applyButton(buttonView, null);
         }
-        //列表
+        // 列表
         else if (mParams.itemsParams != null) {
             final ItemsView itemsView = mCreateView.buildItems();
+//            if (mParams.itemListener != null) {
+//                itemsView.regOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                        mHandler.obtainMessage(position, itemsView).sendToTarget();
+//                        if (!mParams.itemsParams.isManualClose)
+//                            mHandler.obtainMessage(MSG_DISMISS_DIALOG, mDialog).sendToTarget();
+//                    }
+//                });
+//            } else
             if (mParams.itemListener != null) {
-                itemsView.regOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        mHandler.obtainMessage(position, itemsView).sendToTarget();
-                        if (!mParams.itemsParams.isManualClose)
-                            mHandler.obtainMessage(MSG_DISMISS_DIALOG, mDialog).sendToTarget();
-                    }
-                });
-            } else if (mParams.rvItemListener != null) {
-                itemsView.regOnItemClickListener(new OnRvItemClickListener() {
+                itemsView.regOnItemClickListener(new OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         mHandler.obtainMessage(position, itemsView).sendToTarget();
@@ -104,19 +106,19 @@ public class Controller {
             final ButtonView itemsButton = mCreateView.buildItemsButton();
             applyButton(itemsButton, null);
         }
-        //进度条
+        // 进度条
         else if (mParams.progressParams != null) {
             mCreateView.buildProgress();
             ButtonView buttonView = mCreateView.buildMultipleButton();
             applyButton(buttonView, null);
         }
-        //输入框
+        // 输入框
         else if (mParams.inputParams != null) {
             InputView inputView = mCreateView.buildInput();
             ButtonView buttonView = mCreateView.buildMultipleButton();
             applyButton(buttonView, (View) inputView);
         }
-        //lottie动画框
+        // lottie动画
         else if (mParams.lottieParams != null) {
             mCreateView.buildLottie();
             ButtonView buttonView = mCreateView.buildMultipleButton();
@@ -125,7 +127,6 @@ public class Controller {
     }
 
     private void applyButton(final ButtonView viewButton, final View viewClick) {
-
         viewButton.regNegativeListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -52,7 +52,7 @@ public class CircleDimen {
     /**
      * 列表模式底部按钮与列表的距离
      */
-    public static int BUTTON_ITEMS_MARGIN = 15;
+    public static int BUTTON_ITEMS_MARGIN = 18;
     /**
      * 输入框的高
      */

@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.View;
-import android.widget.AdapterView;
 
 import com.wecent.smart.params.ButtonParams;
 import com.wecent.smart.params.DialogParams;
@@ -24,10 +23,12 @@ import com.wecent.smart.widget.listener.OnCreateMessageListener;
 import com.wecent.smart.widget.listener.OnCreateTitleListener;
 import com.wecent.smart.widget.listener.OnInputClickListener;
 import com.wecent.smart.widget.listener.OnInputCounterChangeListener;
-import com.wecent.smart.widget.listener.OnRvItemClickListener;
+import com.wecent.smart.widget.listener.OnItemClickListener;
 
 /**
- * Created by wecent on 2017/3/30.
+ * desc: .
+ * author: wecent .
+ * date: 2017/3/30 .
  */
 
 public class SmartParams implements Parcelable {
@@ -51,11 +52,7 @@ public class SmartParams implements Parcelable {
     /**
      * RecyclerView Item点击事件
      */
-    public OnRvItemClickListener rvItemListener;
-    /**
-     * item 点击事件
-     */
-    public AdapterView.OnItemClickListener itemListener;
+    public OnItemClickListener itemListener;
     /**
      * dialog 关闭事件
      */
@@ -68,6 +65,7 @@ public class SmartParams implements Parcelable {
      * dialog 显示事件
      */
     public DialogInterface.OnShowListener showListener;
+
     public DialogParams dialogParams;
     public TitleParams titleParams;
     public SubtitleParams subtitleParams;
@@ -90,6 +88,7 @@ public class SmartParams implements Parcelable {
     public OnInputCounterChangeListener inputCounterChangeListener;
 
     public SmartParams() {
+
     }
 
     @Override

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -14,10 +15,12 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.smart.SmartDialog;
-import com.wecent.smart.callback.ConfigMessage;
-import com.wecent.smart.params.MessageParams;
+import com.wecent.smart.callback.ConfigItems;
+import com.wecent.smart.params.ItemsParams;
 import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.widget.listener.OnItemClickListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
@@ -52,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                 "单选弹框（居中弹出）",
                 "单选弹框（底部弹出）",
                 "单选弹框（底部弹出）",
-                "进度弹框"
+                "进度弹框",
+                "单选弹框(表格样式)"
 //                "换头像",
 //                "输入框",
 //                "进度框",
@@ -91,10 +95,10 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                         .setPositive("确定", null)
                         .configMessage(params ->
                             params.padding = new int[]{100, 0, 100, 50})
-                        .setOnShowListener(dialog ->
-                                Toast.makeText(MainActivity.this, "显示了！", Toast.LENGTH_SHORT).show())
-                        .setOnCancelListener(dialog ->
-                                Toast.makeText(MainActivity.this, "取消了！", Toast.LENGTH_SHORT).show())
+//                        .setOnShowListener(dialog ->
+//                                Toast.makeText(MainActivity.this, "显示了！", Toast.LENGTH_SHORT).show())
+//                        .setOnCancelListener(dialog ->
+//                                Toast.makeText(MainActivity.this, "取消了！", Toast.LENGTH_SHORT).show())
                         .show(getSupportFragmentManager());
                 break;
             case 1:
@@ -136,13 +140,6 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                             params.padding = new int[]{20, 30, 20, 30};
                             params.margins = new int[]{30, 0, 30, 50};
                             params.inputHeight = 120;
-//                                params.inputBackgroundResourceId = R.drawable.bg_input;
-//                                params.gravity = Gravity.CENTER;
-                            //密码
-//                                params.inputType = InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD
-//                                        | InputType.TYPE_TEXT_FLAG_MULTI_LINE;
-                            //文字加粗
-//                            params.styleText = Typeface.BOLD;
                         })
                         .setNegative("取消", null)
                         .setPositiveInput("确定", (text, v) -> {
@@ -163,8 +160,12 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                         })
                         .setTitle("标题")
                         .setSubtitle("请从以下中选择照片的方式进行提交")
-                        .setItems(items1, (parent, view1, position1, id) ->
-                                Toast.makeText(MainActivity.this, "点击了：" + items1[position1], Toast.LENGTH_SHORT).show())
+                        .setItems(items1, new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Toast.makeText(MainActivity.this, "点击了：" + items1[position], Toast.LENGTH_SHORT).show();
+                            }
+                        })
                         .show(getSupportFragmentManager());
                 break;
             case 5:
@@ -177,8 +178,18 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                         })
                         .setTitle("标题")
                         .setSubtitle("请从以下中选择照片的方式进行提交")
-                        .setItems(items2, (parent, view1, position1, id) ->
-                                Toast.makeText(MainActivity.this, "点击了：" + items2[position1], Toast.LENGTH_SHORT).show())
+                        .configItems(new ConfigItems() {
+                            @Override
+                            public void onConfig(ItemsParams params) {
+                                params.bottomMargin = 0;
+                            }
+                        })
+                        .setItems(items2, new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Toast.makeText(MainActivity.this, "点击了：" + items2[position], Toast.LENGTH_SHORT).show();
+                            }
+                        })
                         .show(getSupportFragmentManager());
                 break;
             case 6:
@@ -190,8 +201,12 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                         })
                         .setTitle("标题")
                         .setSubtitle("请从以下中选择照片的方式进行提交")
-                        .setItems(items3, (parent, view1, position1, id) ->
-                                Toast.makeText(MainActivity.this, "点击了：" + items3[position1], Toast.LENGTH_SHORT).show())
+                        .setItems(items3, new OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Toast.makeText(MainActivity.this, "点击了：" + items3[position], Toast.LENGTH_SHORT).show();
+                            }
+                        })
                         .setNegative("取消", v -> {
                             Toast.makeText(MainActivity.this, "取消", Toast.LENGTH_SHORT).show();
                         })
@@ -225,6 +240,22 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                     }
                 };
                 timer.schedule(timerTask, 0, 50);
+                break;
+            case 8:
+                final List<String> list = new ArrayList<>();
+                list.add("拍照");
+                list.add("相册");
+                list.add("视频");
+                list.add("其他");
+                list.add("其他");
+                GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+                new SmartDialog.Builder()
+                        .setTitle("标题")
+                        .setSubtitle("请从以下中选择照片的方式进行提交")
+                        .setItems(list, gridLayoutManager, (view13, position13) ->
+                                Toast.makeText(MainActivity.this, "点击了：" + list.get(position13), Toast.LENGTH_SHORT).show())
+                        .setNegative("取消", null)
+                        .show(getSupportFragmentManager());
                 break;
 //            case 6:
 //                dialogFragment = new SmartDialog.Builder()
@@ -402,7 +433,7 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
 //                        .setTitle("提示")
 //                        .setWidth(0.7f)
 //                        .setBodyView(R.layout.share_page_loading, view16 -> {
-//                            CircleDrawable bgCircleDrawable = new CircleDrawable(CircleColor.DIALOG_BACKGROUND
+//                            SmartDrawable bgCircleDrawable = new SmartDrawable(CircleColor.DIALOG_BACKGROUND
 //                                    , 0, 0, CircleDimen.DIALOG_RADIUS, CircleDimen.DIALOG_RADIUS);
 //                            view16.setBackgroundDrawable(bgCircleDrawable);
 //                        })
