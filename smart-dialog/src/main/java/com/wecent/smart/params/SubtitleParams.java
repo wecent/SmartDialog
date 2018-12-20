@@ -5,8 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.Gravity;
 
-import com.wecent.smart.resource.values.CircleColor;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartColor;
+import com.wecent.smart.resource.values.SmartDimen;
 
 /**
  * 副标题参数
@@ -31,7 +31,7 @@ public class SubtitleParams implements Parcelable {
     /**
      * 内间距 [left, top, right, bottom]
      */
-    public int[] padding = CircleDimen.SUBTITLE_PADDING;
+    public int[] padding = SmartDimen.SUBTITLE_PADDING;
     /**
      * 标题高度
      */
@@ -39,11 +39,11 @@ public class SubtitleParams implements Parcelable {
     /**
      * 标题字体大小
      */
-    public int textSize = CircleDimen.SUBTITLE_TEXT_SIZE;
+    public int textSize = SmartDimen.SUBTITLE_TEXT_SIZE;
     /**
      * 标题字体颜色
      */
-    public int textColor = CircleColor.SUBTITLE_TEXT;
+    public int textColor = SmartColor.SUBTITLE_TEXT;
     /**
      * 标题背景颜色
      */

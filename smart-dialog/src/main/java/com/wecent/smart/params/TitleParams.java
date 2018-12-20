@@ -5,8 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.Gravity;
 
-import com.wecent.smart.resource.values.CircleColor;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartColor;
+import com.wecent.smart.resource.values.SmartDimen;
 
 /**
  * 标题参数
@@ -32,15 +32,15 @@ public class TitleParams implements Parcelable {
     /**
      * 标题高度
      */
-    public int height = CircleDimen.TITLE_HEIGHT;
+    public int height = SmartDimen.TITLE_HEIGHT;
     /**
      * 标题字体大小
      */
-    public int textSize = CircleDimen.TITLE_TEXT_SIZE;
+    public int textSize = SmartDimen.TITLE_TEXT_SIZE;
     /**
      * 标题字体颜色
      */
-    public int textColor = CircleColor.TITLE;
+    public int textColor = SmartColor.TITLE;
     /**
      * 标题背景颜色
      */

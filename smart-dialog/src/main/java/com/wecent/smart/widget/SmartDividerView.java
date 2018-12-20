@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.wecent.smart.resource.values.CircleColor;
+import com.wecent.smart.resource.values.SmartColor;
 
 /**
  * 分隔线，默认垂直
@@ -18,7 +18,7 @@ final class SmartDividerView extends View {
 
     private void init() {
         setLayoutParams(new LinearLayout.LayoutParams(1, LinearLayout.LayoutParams.MATCH_PARENT));
-        setBackgroundColor(CircleColor.divider);
+        setBackgroundColor(SmartColor.divider);
     }
 
     /**

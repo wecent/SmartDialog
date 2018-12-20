@@ -17,7 +17,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.smart.SmartDialog;
 import com.wecent.smart.callback.ConfigItems;
 import com.wecent.smart.params.ItemsParams;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartDimen;
 import com.wecent.smart.widget.listener.OnItemClickListener;
 
 import java.util.ArrayList;
@@ -29,8 +29,7 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.OnItemClickListener {
     //全局配置
     static {
-        CircleDimen.DIALOG_RADIUS = 20;
-        //CircleColor.
+        SmartDimen.DIALOG_RADIUS = 20;
     }
 
     private SmartDialog.Builder builder;
@@ -433,8 +432,8 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
 //                        .setTitle("提示")
 //                        .setWidth(0.7f)
 //                        .setBodyView(R.layout.share_page_loading, view16 -> {
-//                            SmartDrawable bgCircleDrawable = new SmartDrawable(CircleColor.DIALOG_BACKGROUND
-//                                    , 0, 0, CircleDimen.DIALOG_RADIUS, CircleDimen.DIALOG_RADIUS);
+//                            SmartDrawable bgCircleDrawable = new SmartDrawable(SmartColor.DIALOG_BACKGROUND
+//                                    , 0, 0, SmartDimen.DIALOG_RADIUS, SmartDimen.DIALOG_RADIUS);
 //                            view16.setBackgroundDrawable(bgCircleDrawable);
 //                        })
 //                        .show(getSupportFragmentManager());

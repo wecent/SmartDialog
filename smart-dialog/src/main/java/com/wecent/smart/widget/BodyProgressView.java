@@ -15,7 +15,7 @@ import com.wecent.smart.params.DialogParams;
 import com.wecent.smart.params.ProgressParams;
 import com.wecent.smart.params.TitleParams;
 import com.wecent.smart.resource.drawable.SmartDrawable;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartDimen;
 import com.wecent.smart.widget.listener.OnCreateProgressListener;
 
 import java.lang.reflect.Field;
@@ -94,7 +94,7 @@ final class BodyProgressView extends ScaleLinearLayout {
             } else {
                 mProgressBar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
             }
-            mProgressParams.progressHeight = CircleDimen.PROGRESS_HEIGHT_HORIZONTAL;
+            mProgressParams.progressHeight = SmartDimen.PROGRESS_HEIGHT_HORIZONTAL;
         }
         //旋转样式
         else {
@@ -107,7 +107,7 @@ final class BodyProgressView extends ScaleLinearLayout {
             } else {
                 mProgressBar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyle);
             }
-            mProgressParams.progressHeight = CircleDimen.PROGRESS_HEIGHT_SPINNER;
+            mProgressParams.progressHeight = SmartDimen.PROGRESS_HEIGHT_SPINNER;
         }
 
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT, mProgressParams

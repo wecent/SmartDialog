@@ -3,7 +3,7 @@ package com.wecent.smart.resource.values;
 /**
  * Created by wecent on 2017/3/29.
  */
-public class CircleColor {
+public class SmartColor {
 
     /**
      * 对话框背景色

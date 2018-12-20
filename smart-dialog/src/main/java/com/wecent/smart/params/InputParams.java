@@ -6,8 +6,8 @@ import android.os.Parcelable;
 import android.text.InputType;
 import android.view.Gravity;
 
-import com.wecent.smart.resource.values.CircleColor;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartColor;
+import com.wecent.smart.resource.values.SmartDimen;
 
 /**
  * 输入框参数
@@ -29,11 +29,11 @@ public class InputParams implements Parcelable {
     /**
      * 输入框与body视图的距离
      */
-    public int[] margins = CircleDimen.INPUT_MARGINS;
+    public int[] margins = SmartDimen.INPUT_MARGINS;
     /**
      * 输入框的高度
      */
-    public int inputHeight = CircleDimen.INPUT_HEIGHT;
+    public int inputHeight = SmartDimen.INPUT_HEIGHT;
     /**
      * 输入框提示语
      */
@@ -41,7 +41,7 @@ public class InputParams implements Parcelable {
     /**
      * 输入框提示语颜色
      */
-    public int hintTextColor = CircleColor.INPUT_TEXT_HINT;
+    public int hintTextColor = SmartColor.INPUT_TEXT_HINT;
     /**
      * 输入框背景资源文件
      */
@@ -57,7 +57,7 @@ public class InputParams implements Parcelable {
     /**
      * 输入框边框线条颜色
      */
-    public int strokeColor = CircleColor.INPUT_STROKE;
+    public int strokeColor = SmartColor.INPUT_STROKE;
     /**
      * 输入框的背景
      */
@@ -69,11 +69,11 @@ public class InputParams implements Parcelable {
     /**
      * 输入框字体大小
      */
-    public int textSize = CircleDimen.INPUT_TEXT_SIZE;
+    public int textSize = SmartDimen.INPUT_TEXT_SIZE;
     /**
      * 输入框字体颜色
      */
-    public int textColor = CircleColor.INPUT_TEXT;
+    public int textColor = SmartColor.INPUT_TEXT;
     /**
      * 输入类型
      */
@@ -93,7 +93,7 @@ public class InputParams implements Parcelable {
     /**
      * 内间距 [left, top, right, bottom]
      */
-    public int[] padding = CircleDimen.INPUT_PADDING;
+    public int[] padding = SmartDimen.INPUT_PADDING;
     /**
      * 字样式
      * {@linkplain Typeface#NORMAL NORMAL}
@@ -109,8 +109,8 @@ public class InputParams implements Parcelable {
     /**
      * 外边距 [右，下]
      */
-    public int[] counterMargins = CircleDimen.INPUT_COUNTER_MARGINS;
-    public int counterColor = CircleColor.INPUT_COUNTER_TEXT;
+    public int[] counterMargins = SmartDimen.INPUT_COUNTER_MARGINS;
+    public int counterColor = SmartColor.INPUT_COUNTER_TEXT;
     /**
      * 显示软键盘
      */

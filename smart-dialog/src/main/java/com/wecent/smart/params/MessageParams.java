@@ -5,8 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.Gravity;
 
-import com.wecent.smart.resource.values.CircleColor;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartColor;
+import com.wecent.smart.resource.values.SmartDimen;
 
 /**
  * 文本内容参数
@@ -29,7 +29,7 @@ public class MessageParams implements Parcelable {
     /**
      * body文本内间距 [left, top, right, bottom]
      */
-    public int[] padding = CircleDimen.MESSAGE_PADDING;
+    public int[] padding = SmartDimen.MESSAGE_PADDING;
     /**
      * 文本
      */
@@ -37,7 +37,7 @@ public class MessageParams implements Parcelable {
     /**
      * 文本高度
      */
-    public int height = CircleDimen.MESSAGE_HEIGHT;
+    public int height = SmartDimen.MESSAGE_HEIGHT;
     /**
      * 文本背景颜色
      */
@@ -45,11 +45,11 @@ public class MessageParams implements Parcelable {
     /**
      * 文本字体颜色
      */
-    public int messageColor = CircleColor.CONTENT;
+    public int messageColor = SmartColor.CONTENT;
     /**
      * 文本字体大小
      */
-    public int messageSize = CircleDimen.MESSAGE_TEXT_SIZE;
+    public int messageSize = SmartDimen.MESSAGE_TEXT_SIZE;
     public int gravity = Gravity.CENTER;
     /**
      * 字样式

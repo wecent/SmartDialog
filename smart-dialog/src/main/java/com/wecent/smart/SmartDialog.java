@@ -29,7 +29,7 @@ import com.wecent.smart.params.MessageParams;
 import com.wecent.smart.params.ProgressParams;
 import com.wecent.smart.params.SubtitleParams;
 import com.wecent.smart.params.TitleParams;
-import com.wecent.smart.resource.values.CircleColor;
+import com.wecent.smart.resource.values.SmartColor;
 import com.wecent.smart.widget.listener.OnCreateBodyViewListener;
 import com.wecent.smart.widget.listener.OnCreateButtonListener;
 import com.wecent.smart.widget.listener.OnCreateInputListener;
@@ -691,7 +691,7 @@ public final class SmartDialog {
         private void newNegativeParams() {
             if (mSmartParams.negativeParams == null) {
                 mSmartParams.negativeParams = new ButtonParams();
-                mSmartParams.negativeParams.textColor = CircleColor.FOOTER_BUTTON_TEXT_NEGATIVE;
+                mSmartParams.negativeParams.textColor = SmartColor.FOOTER_BUTTON_TEXT_NEGATIVE;
             }
         }
 

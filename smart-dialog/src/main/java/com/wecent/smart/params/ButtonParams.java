@@ -4,8 +4,8 @@ import android.graphics.Typeface;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.wecent.smart.resource.values.CircleColor;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartColor;
+import com.wecent.smart.resource.values.SmartDimen;
 
 /**
  * 按钮参数
@@ -31,15 +31,15 @@ public class ButtonParams implements Parcelable {
     /**
      * 按钮文本颜色
      */
-    public int textColor = CircleColor.FOOTER_BUTTON_TEXT_POSITIVE;
+    public int textColor = SmartColor.FOOTER_BUTTON_TEXT_POSITIVE;
     /**
      * 按钮文本大小
      */
-    public int textSize = CircleDimen.FOOTER_BUTTON_TEXT_SIZE;
+    public int textSize = SmartDimen.FOOTER_BUTTON_TEXT_SIZE;
     /**
      * 按钮高度
      */
-    public int height = CircleDimen.FOOTER_BUTTON_HEIGHT;
+    public int height = SmartDimen.FOOTER_BUTTON_HEIGHT;
     /**
      * 按钮背景颜色
      */
@@ -55,7 +55,7 @@ public class ButtonParams implements Parcelable {
     /**
      * 禁用后的按钮文本颜色
      */
-    public int textColorDisable = CircleColor.FOOTER_BUTTON_DISABLE;
+    public int textColorDisable = SmartColor.FOOTER_BUTTON_DISABLE;
     /**
      * 按下颜色值
      */

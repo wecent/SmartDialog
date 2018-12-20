@@ -4,10 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.BaseAdapter;
 
-import com.wecent.smart.resource.values.CircleColor;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartColor;
+import com.wecent.smart.resource.values.SmartDimen;
 
 /**
  * items 内容参数
@@ -33,7 +32,7 @@ public class ItemsParams implements Parcelable {
     /**
      * item高度
      */
-    public int itemHeight = CircleDimen.ITEM_HEIGHT;
+    public int itemHeight = SmartDimen.ITEM_HEIGHT;
     public int dividerHeight = 1;
     /**
      * item内间距
@@ -46,11 +45,11 @@ public class ItemsParams implements Parcelable {
     /**
      * item字体色
      */
-    public int textColor = CircleColor.ITEM_CONTENT_TEXT;
+    public int textColor = SmartColor.ITEM_CONTENT_TEXT;
     /**
      * item字体大小
      */
-    public int textSize = CircleDimen.ITEM_CONTENT_TEXT_SIZE;
+    public int textSize = SmartDimen.ITEM_CONTENT_TEXT_SIZE;
     /**
      * 按下颜色值
      */

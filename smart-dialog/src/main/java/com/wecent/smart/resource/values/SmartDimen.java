@@ -3,7 +3,7 @@ package com.wecent.smart.resource.values;
 /**
  * Created by wecent on 2017/3/29.
  */
-public class CircleDimen {
+public class SmartDimen {
 
     /**
      * 对话框圆角

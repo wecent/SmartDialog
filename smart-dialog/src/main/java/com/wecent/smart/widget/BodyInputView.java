@@ -21,7 +21,7 @@ import com.wecent.smart.widget.listener.InputView;
 import com.wecent.smart.widget.listener.OnCreateInputListener;
 
 import static com.wecent.smart.widget.Controller.BUTTON_POSITIVE;
-import static com.wecent.smart.resource.values.CircleDimen.INPUT_COUNTER_TEXT_SIZE;
+import static com.wecent.smart.resource.values.SmartDimen.INPUT_COUNTER_TEXT_SIZE;
 
 /**
  * Created by wecent on 2017/3/31.

@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.view.Gravity;
 
-import com.wecent.smart.resource.values.CircleColor;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartColor;
+import com.wecent.smart.resource.values.SmartDimen;
 
 /**
  * 对话框参数
@@ -38,11 +38,11 @@ public class DialogParams implements Parcelable {
     /**
      * 对话框透明度，范围：0-1；1不透明
      */
-    public float alpha = CircleDimen.DIALOG_ALPHA;
+    public float alpha = SmartDimen.DIALOG_ALPHA;
     /**
      * 对话框宽度，范围：0-1；1整屏宽
      */
-    public float width = CircleDimen.DIALOG_WIDTH;
+    public float width = SmartDimen.DIALOG_WIDTH;
     /**
      * 对话框与屏幕边距
      */
@@ -62,11 +62,11 @@ public class DialogParams implements Parcelable {
     /**
      * 对话框的背景色
      */
-    public int backgroundColor = CircleColor.DIALOG_BACKGROUND;
+    public int backgroundColor = SmartColor.DIALOG_BACKGROUND;
     /**
      * 对话框的圆角半径
      */
-    public int radius = CircleDimen.DIALOG_RADIUS;
+    public int radius = SmartDimen.DIALOG_RADIUS;
     /**
      * 对话框 x 坐标偏移
      */
@@ -78,7 +78,7 @@ public class DialogParams implements Parcelable {
     /**
      * 按下颜色值
      */
-    public int backgroundColorPress = CircleColor.DIALOG_BACKGROUND_PRESS;
+    public int backgroundColorPress = SmartColor.DIALOG_BACKGROUND_PRESS;
     public float maxHeight;//最大高度
 
     public DialogParams() {

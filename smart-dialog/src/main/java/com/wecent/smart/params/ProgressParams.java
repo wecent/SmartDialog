@@ -4,8 +4,8 @@ import android.graphics.Typeface;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.wecent.smart.resource.values.CircleColor;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartColor;
+import com.wecent.smart.resource.values.SmartDimen;
 
 /**
  * 进度条参数
@@ -40,11 +40,11 @@ public class ProgressParams implements Parcelable {
     /**
      * 进度条与body的边距 [left, top, right, bottom]
      */
-    public int[] margins = CircleDimen.PROGRESS_MARGINS;
+    public int[] margins = SmartDimen.PROGRESS_MARGINS;
     /**
      * 底部文字内边距 [left, top, right, bottom]
      */
-    public int[] padding = CircleDimen.PROGRESS_TEXT_PADDING;
+    public int[] padding = SmartDimen.PROGRESS_TEXT_PADDING;
     /**
      * 进度条资源背景
      */
@@ -72,11 +72,11 @@ public class ProgressParams implements Parcelable {
     /**
      * 文本字体颜色
      */
-    public int textColor = CircleColor.LOADING_TEXT;
+    public int textColor = SmartColor.LOADING_TEXT;
     /**
      * 文本字体大小
      */
-    public int textSize = CircleDimen.LOADING_TEXT_SIZE;
+    public int textSize = SmartDimen.LOADING_TEXT_SIZE;
     /**
      * 字样式
      * {@linkplain Typeface#NORMAL NORMAL}

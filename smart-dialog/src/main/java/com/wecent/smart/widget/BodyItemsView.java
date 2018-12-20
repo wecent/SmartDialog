@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,8 +19,8 @@ import com.wecent.smart.SmartParams;
 import com.wecent.smart.params.ItemsParams;
 import com.wecent.smart.params.TitleParams;
 import com.wecent.smart.resource.drawable.ButtonDrawable;
-import com.wecent.smart.resource.values.CircleColor;
-import com.wecent.smart.resource.values.CircleDimen;
+import com.wecent.smart.resource.values.SmartColor;
+import com.wecent.smart.resource.values.SmartDimen;
 import com.wecent.smart.scale.ScaleHelper;
 import com.wecent.smart.widget.listener.ItemsView;
 import com.wecent.smart.widget.listener.OnItemClickListener;
@@ -51,7 +50,7 @@ final class BodyItemsView extends RecyclerView implements Controller.OnClickList
 
         //设置列表与按钮之间的下距离
         if (itemsParams.bottomMargin == -1) {
-            itemsParams.bottomMargin = CircleDimen.BUTTON_ITEMS_MARGIN;
+            itemsParams.bottomMargin = SmartDimen.BUTTON_ITEMS_MARGIN;
         }
         layoutParams.bottomMargin = ScaleHelper.scaleValue(itemsParams.bottomMargin);
         setLayoutParams(layoutParams);
@@ -72,9 +71,9 @@ final class BodyItemsView extends RecyclerView implements Controller.OnClickList
 
         ItemDecoration itemDecoration = itemsParams.itemDecoration;
         if (itemsParams.layoutManager instanceof GridLayoutManager && itemDecoration == null) {
-            itemDecoration = new GridItemDecoration(new ColorDrawable(CircleColor.divider), itemsParams.dividerHeight);
+            itemDecoration = new GridItemDecoration(new ColorDrawable(SmartColor.divider), itemsParams.dividerHeight);
         } else if (itemsParams.layoutManager instanceof LinearLayoutManager && itemDecoration == null) {
-            itemDecoration = new LinearItemDecoration(new ColorDrawable(CircleColor.divider), itemsParams.dividerHeight);
+            itemDecoration = new LinearItemDecoration(new ColorDrawable(SmartColor.divider), itemsParams.dividerHeight);
         }
         addItemDecoration(itemDecoration);
 
