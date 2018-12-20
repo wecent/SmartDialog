@@ -22,7 +22,6 @@ public final class BuildViewImpl implements BuildView {
     private BodyTextView mBodyTextView;
     private ItemsView mItemsView;
     private BodyProgressView mBodyProgressView;
-    private BodyLottieView mBodyLottieView;
     private InputView mBodyInputView;
     private SmartSingleButton mSmartSingleButton;
     private ButtonView mMultipleButton;
@@ -113,15 +112,6 @@ public final class BuildViewImpl implements BuildView {
         }
         return mBodyProgressView;
     }
-
-    @Override
-    public void buildLottie() {
-        if (mBodyLottieView == null) {
-            mBodyLottieView = new BodyLottieView(mContext, mParams);
-            mRoot.addView(mBodyLottieView);
-        }
-    }
-
 
     @Override
     public View refreshProgress() {

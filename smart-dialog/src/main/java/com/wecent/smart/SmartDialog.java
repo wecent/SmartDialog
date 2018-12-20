@@ -25,7 +25,6 @@ import com.wecent.smart.params.ButtonParams;
 import com.wecent.smart.params.DialogParams;
 import com.wecent.smart.params.InputParams;
 import com.wecent.smart.params.ItemsParams;
-import com.wecent.smart.params.LottieParams;
 import com.wecent.smart.params.MessageParams;
 import com.wecent.smart.params.ProgressParams;
 import com.wecent.smart.params.SubtitleParams;
@@ -34,7 +33,6 @@ import com.wecent.smart.resource.values.CircleColor;
 import com.wecent.smart.widget.listener.OnCreateBodyViewListener;
 import com.wecent.smart.widget.listener.OnCreateButtonListener;
 import com.wecent.smart.widget.listener.OnCreateInputListener;
-import com.wecent.smart.widget.listener.OnCreateLottieListener;
 import com.wecent.smart.widget.listener.OnCreateProgressListener;
 import com.wecent.smart.widget.listener.OnCreateMessageListener;
 import com.wecent.smart.widget.listener.OnCreateTitleListener;
@@ -620,54 +618,6 @@ public final class SmartDialog {
         public Builder configInput(@NonNull ConfigInput configInput) {
             newInputParams();
             configInput.onConfig(mSmartParams.inputParams);
-            return this;
-        }
-
-        public Builder setLottieAnimation(String animationFileName) {
-            newLottieParams();
-            mSmartParams.lottieParams.animationFileName = animationFileName;
-            return this;
-        }
-
-        private void newLottieParams() {
-            if (mSmartParams.lottieParams == null) {
-                mSmartParams.lottieParams = new LottieParams();
-            }
-        }
-
-        public Builder setLottieAnimation(int animationResId) {
-            newLottieParams();
-            mSmartParams.lottieParams.animationResId = animationResId;
-            return this;
-        }
-
-        public Builder playLottieAnimation() {
-            newLottieParams();
-            mSmartParams.lottieParams.autoPlay = true;
-            return this;
-        }
-
-        public Builder setLottieLoop(boolean loop) {
-            newLottieParams();
-            mSmartParams.lottieParams.loop = loop;
-            return this;
-        }
-
-        public Builder setLottieText(String text) {
-            newLottieParams();
-            mSmartParams.lottieParams.text = text;
-            return this;
-        }
-
-        public Builder setLottieSize(int width, int height) {
-            newLottieParams();
-            mSmartParams.lottieParams.lottieWidth = width;
-            mSmartParams.lottieParams.lottieHeight = height;
-            return this;
-        }
-
-        public Builder setOnCreateLottieListener(OnCreateLottieListener listener) {
-            mSmartParams.createLottieListener = listener;
             return this;
         }
 

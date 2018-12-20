@@ -75,11 +75,6 @@ public interface BuildView {
     View buildProgress();
 
     /**
-     * 生成lottie动画框
-     */
-    void buildLottie();
-
-    /**
      * 刷新进度条
      *
      * @return 进度条视图

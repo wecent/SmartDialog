@@ -8,7 +8,7 @@ android {
         minSdkVersion 16
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
-        versionName rootProject.ext.publish.version
+        versionName rootProject.ext.android.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 //        jackOptions {
 //            enabled=true
@@ -31,11 +31,10 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':smart-dialog')
-    implementation rootProject.ext.dependencies.appcompatV7
-    implementation rootProject.ext.dependencies.recyclerview
-    implementation rootProject.ext.dependencies.lottie
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.35'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-    androidTestImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    implementation rootProject.ext.dependencies["support-v7"]
+    implementation rootProject.ext.dependencies["recyclerview"]
+    implementation rootProject.ext.dependencies["baseadapter"]
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+//    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+//    androidTestImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }

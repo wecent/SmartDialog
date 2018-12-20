@@ -118,12 +118,6 @@ public class Controller {
             ButtonView buttonView = mCreateView.buildMultipleButton();
             applyButton(buttonView, (View) inputView);
         }
-        // lottie动画
-        else if (mParams.lottieParams != null) {
-            mCreateView.buildLottie();
-            ButtonView buttonView = mCreateView.buildMultipleButton();
-            applyButton(buttonView, null);
-        }
     }
 
     private void applyButton(final ButtonView viewButton, final View viewClick) {

@@ -1,6 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
-apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -26,16 +24,6 @@ android {
 }
 
 dependencies {
-    compileOnly rootProject.ext.dependencies.appcompatV7
-    compileOnly rootProject.ext.dependencies.recyclerview
-    compileOnly rootProject.ext.dependencies.lottie
-}
-
-publish {
-    userOrg = 'mylhyl'
-    groupId = 'com.mylhyl'
-    artifactId = 'circleDialog'
-    publishVersion = rootProject.ext.publish.version
-    desc = 'circleDialog ios style'
-    website = "https://github.com/mylhyl/Android-SmartDialog"
+    implementation rootProject.ext.dependencies["support-v7"]
+    implementation rootProject.ext.dependencies["recyclerview"]
 }
