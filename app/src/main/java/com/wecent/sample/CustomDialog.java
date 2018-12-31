@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wecent.smart.BaseSmartDialog;
-import com.wecent.smart.sample.R;
+import com.wecent.smartdialog.BaseSmartDialog;
+import com.wecent.smartdialog.sample.R;
 
 /**
  * 注销框
@@ -27,16 +27,16 @@ public class CustomDialog extends BaseSmartDialog implements View.OnClickListene
 
     @Override
     public View createView(Context context, LayoutInflater inflater, ViewGroup container) {
-        return inflater.inflate(com.wecent.smart.sample.R.layout.dialog_logout, container, false);
+        return inflater.inflate(com.wecent.smartdialog.sample.R.layout.dialog_logout, container, false);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         View view = getView();
-        view.findViewById(com.wecent.smart.sample.R.id.but_cancle).setOnClickListener(this);
-        view.findViewById(com.wecent.smart.sample.R.id.logout_ok).setOnClickListener(this);
-        view.findViewById(com.wecent.smart.sample.R.id.logout_cancel).setOnClickListener(this);
+        view.findViewById(com.wecent.smartdialog.sample.R.id.but_cancle).setOnClickListener(this);
+        view.findViewById(com.wecent.smartdialog.sample.R.id.logout_ok).setOnClickListener(this);
+        view.findViewById(com.wecent.smartdialog.sample.R.id.logout_cancel).setOnClickListener(this);
     }
 
     @Override

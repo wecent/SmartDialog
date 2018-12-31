@@ -4,7 +4,7 @@ android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     //buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
-        applicationId "com.mylhyl.circledialog.sample"
+        applicationId "com.wecent.smart.sample"
         minSdkVersion 16
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
@@ -34,7 +34,4 @@ dependencies {
     implementation rootProject.ext.dependencies["support-v7"]
     implementation rootProject.ext.dependencies["recyclerview"]
     implementation rootProject.ext.dependencies["baseadapter"]
-//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-//    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-//    androidTestImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }

@@ -14,11 +14,13 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.wecent.smart.SmartDialog;
-import com.wecent.smart.callback.ConfigItems;
-import com.wecent.smart.params.ItemsParams;
-import com.wecent.smart.resource.values.SmartDimen;
-import com.wecent.smart.widget.listener.OnItemClickListener;
+import com.wecent.smartdialog.SmartDialog;
+import com.wecent.smartdialog.callback.ConfigDialog;
+import com.wecent.smartdialog.callback.ConfigItems;
+import com.wecent.smartdialog.params.DialogParams;
+import com.wecent.smartdialog.params.ItemsParams;
+import com.wecent.smartdialog.resource.values.SmartDimen;
+import com.wecent.smartdialog.widget.listener.OnItemsClickListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,9 +43,9 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.wecent.smart.sample.R.layout.activity_main);
+        setContentView(com.wecent.smartdialog.sample.R.layout.activity_main);
 
-        RecyclerView recyclerView = findViewById(com.wecent.smart.sample.R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(com.wecent.smartdialog.sample.R.id.recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<String> listData = Arrays.asList(
@@ -88,6 +90,12 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
         switch (position) {
             case 0:
                 new SmartDialog.Builder()
+                        .configDialog(new ConfigDialog() {
+                            @Override
+                            public void onConfig(DialogParams params) {
+                                params.radius = 3;
+                            }
+                        })
                         .setTitle("标题")
                         .setSubtitle("副标题")
                         .setMessage("这是一条来着未来的消息")
@@ -159,9 +167,9 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                         })
                         .setTitle("标题")
                         .setSubtitle("请从以下中选择照片的方式进行提交")
-                        .setItems(items1, new OnItemClickListener() {
+                        .setItems(items1, new OnItemsClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemsClick(View view, int position) {
                                 Toast.makeText(MainActivity.this, "点击了：" + items1[position], Toast.LENGTH_SHORT).show();
                             }
                         })
@@ -173,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                         .configDialog(params -> {
                             params.gravity = Gravity.BOTTOM;
                             //增加弹出动画
-                            params.animStyle = com.wecent.smart.sample.R.style.dialogWindowAnim;
+                            params.animStyle = com.wecent.smartdialog.sample.R.style.dialogWindowAnim;
                         })
                         .setTitle("标题")
                         .setSubtitle("请从以下中选择照片的方式进行提交")
@@ -183,9 +191,9 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                                 params.bottomMargin = 0;
                             }
                         })
-                        .setItems(items2, new OnItemClickListener() {
+                        .setItems(items2, new OnItemsClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemsClick(View view, int position) {
                                 Toast.makeText(MainActivity.this, "点击了：" + items2[position], Toast.LENGTH_SHORT).show();
                             }
                         })
@@ -196,13 +204,13 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                 new SmartDialog.Builder()
                         .configDialog(params -> {
                             //增加弹出动画
-                            params.animStyle = com.wecent.smart.sample.R.style.dialogWindowAnim;
+                            params.animStyle = com.wecent.smartdialog.sample.R.style.dialogWindowAnim;
                         })
                         .setTitle("标题")
                         .setSubtitle("请从以下中选择照片的方式进行提交")
-                        .setItems(items3, new OnItemClickListener() {
+                        .setItems(items3, new OnItemsClickListener() {
                             @Override
-                            public void onItemClick(View view, int position) {
+                            public void onItemsClick(View view, int position) {
                                 Toast.makeText(MainActivity.this, "点击了：" + items3[position], Toast.LENGTH_SHORT).show();
                             }
                         })
