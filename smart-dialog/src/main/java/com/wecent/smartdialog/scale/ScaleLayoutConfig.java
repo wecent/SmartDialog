@@ -10,8 +10,8 @@ import android.content.pm.PackageManager;
 public class ScaleLayoutConfig {
     private static ScaleLayoutConfig sInstance;
 
-    private static final String KEY_DESIGN_WIDTH = "circle_dialog_design_width";
-    private static final String KEY_DESIGN_HEIGHT = "circle_dialog_design_height";
+    private static final String KEY_DESIGN_WIDTH = "smart_dialog_design_width";
+    private static final String KEY_DESIGN_HEIGHT = "smart_dialog_design_height";
     private static final int DESIGN_WIDTH = 1080;
     private static final int DESIGN_HEIGHT = 1920;
 

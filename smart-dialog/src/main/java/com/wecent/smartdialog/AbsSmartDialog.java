@@ -17,20 +17,20 @@ import com.wecent.smartdialog.params.DialogParams;
  */
 
 public final class AbsSmartDialog extends BaseSmartDialog implements DialogInterface.OnShowListener {
-    private static final String SAVED_PARAMS = "circle:params";
+    private static final String SAVED_PARAMS = "smart:params";
     private SmartParams mParams;
     private SmartController mSmartController;
 
     public AbsSmartDialog() {
     }
 
-    public static AbsSmartDialog newAbsCircleDialog(SmartParams params) {
-        AbsSmartDialog circleDialog = new AbsSmartDialog();
-        circleDialog.mParams = params;
+    public static AbsSmartDialog newAbsSmartDialog(SmartParams params) {
+        AbsSmartDialog smartDialog = new AbsSmartDialog();
+        smartDialog.mParams = params;
         Bundle bundle = new Bundle();
         bundle.putParcelable(SAVED_PARAMS, params);
-        circleDialog.setArguments(bundle);
-        return circleDialog;
+        smartDialog.setArguments(bundle);
+        return smartDialog;
     }
 
     @Override

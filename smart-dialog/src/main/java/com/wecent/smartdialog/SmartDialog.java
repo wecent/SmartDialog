@@ -56,7 +56,7 @@ public final class SmartDialog {
 
     public DialogFragment create(SmartParams params) {
         if (mDialog == null)
-            mDialog = AbsSmartDialog.newAbsCircleDialog(params);
+            mDialog = AbsSmartDialog.newAbsSmartDialog(params);
         else {
             if (mDialog.getDialog() != null && mDialog.getDialog().isShowing()) {
                 mDialog.refreshView();

@@ -18,10 +18,10 @@
         </activity>
 
         <meta-data
-            android:name="circle_dialog_design_width"
+            android:name="smart_dialog_design_width"
             android:value="1080" />
         <meta-data
-            android:name="circle_dialog_design_height"
+            android:name="smart_dialog_design_height"
             android:value="1920" />
 
         <activity android:name="com.wecent.sample.list.ListViewActivity"/>
