@@ -261,6 +261,7 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                         .setNegative("取消", null)
                         .show(getSupportFragmentManager());
                 break;
+
 //            case 6:
 //                dialogFragment = new SmartDialog.Builder()
 //                        .setProgressText("登录中...")
