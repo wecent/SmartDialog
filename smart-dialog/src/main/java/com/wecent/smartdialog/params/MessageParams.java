@@ -9,8 +9,9 @@ import com.wecent.smartdialog.resource.values.SmartColor;
 import com.wecent.smartdialog.resource.values.SmartDimen;
 
 /**
- * 文本内容参数
- * Created by wecent on 2017/3/30.
+ * desc: MessageParams
+ * author: wecent
+ * date: 2018/3/30
  */
 public class MessageParams implements Parcelable {
 

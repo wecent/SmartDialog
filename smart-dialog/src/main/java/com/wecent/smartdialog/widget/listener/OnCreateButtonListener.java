@@ -3,9 +3,10 @@ package com.wecent.smartdialog.widget.listener;
 import android.widget.TextView;
 
 /**
- * Created by wecent on 2018/6/13.
+ * desc: OnCreateButtonListener
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public interface OnCreateButtonListener {
     /**
      * @param negativeButton 取消

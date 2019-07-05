@@ -13,9 +13,10 @@ import android.widget.EditText;
 import com.wecent.smartdialog.params.DialogParams;
 
 /**
- * Created by wecent on 2017/3/29.
+ * desc: AbsSmartDialog
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public final class AbsSmartDialog extends BaseSmartDialog implements DialogInterface.OnShowListener {
     private static final String SAVED_PARAMS = "smart:params";
     private SmartParams mParams;

@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 
@@ -37,15 +36,14 @@ import com.wecent.smartdialog.widget.listener.OnCreateProgressListener;
 import com.wecent.smartdialog.widget.listener.OnCreateMessageListener;
 import com.wecent.smartdialog.widget.listener.OnCreateTitleListener;
 import com.wecent.smartdialog.widget.listener.OnInputClickListener;
-import com.wecent.smartdialog.widget.listener.OnInputCounterChangeListener;
+import com.wecent.smartdialog.widget.listener.OnInputChangeListener;
 import com.wecent.smartdialog.widget.listener.OnItemsClickListener;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2017/3/30 .
+ * desc: SmartDialog
+ * author: wecent
+ * date: 2018/3/30
  */
-
 public final class SmartDialog {
 
     private AbsSmartDialog mDialog;
@@ -68,13 +66,13 @@ public final class SmartDialog {
     @Deprecated
     public void show(FragmentActivity activity) {
         if (activity == null) {
-            throw new NullPointerException("please call constructor Builder(FragmentActivity)");
+            throw new NullPointerException("please call constructor builder(FragmentActivity)");
         }
-        mDialog.show(activity.getSupportFragmentManager(), "smartDialog");
+        mDialog.show(activity.getSupportFragmentManager(), "SmartDialog");
     }
 
     public void show(FragmentManager manager) {
-        mDialog.show(manager, "smartDialog");
+        mDialog.show(manager, "SmartDialog");
     }
 
     public static class Builder {
@@ -389,45 +387,11 @@ public final class SmartDialog {
                 mSmartParams.itemsParams = new ItemsParams();
         }
 
-//        public Builder setItems(@NonNull BaseAdapter adapter, AdapterView.OnItemsClickListener listener) {
-//            newItemsParams();
-//            ItemsParams params = mSmartParams.itemsParams;
-//            params.adapter = adapter;
-//            mSmartParams.itemListener = listener;
-//            return this;
-//        }
-
         public Builder setItems(@NonNull Object items, OnItemsClickListener listener) {
             newItemsParams();
             ItemsParams params = mSmartParams.itemsParams;
             params.items = items;
             mSmartParams.itemListener = listener;
-            return this;
-        }
-
-        public Builder setItems(@NonNull Object items, RecyclerView.LayoutManager layoutManager, OnItemsClickListener listener) {
-            newItemsParams();
-            ItemsParams params = mSmartParams.itemsParams;
-            params.items = items;
-            params.layoutManager = layoutManager;
-            mSmartParams.itemListener = listener;
-            return this;
-        }
-
-        public Builder setItems(@NonNull RecyclerView.Adapter adapter, RecyclerView.LayoutManager layoutManager) {
-            newItemsParams();
-            ItemsParams params = mSmartParams.itemsParams;
-            params.layoutManager = layoutManager;
-            params.adapter = adapter;
-            return this;
-        }
-
-        public Builder setItems(@NonNull RecyclerView.Adapter adapter, RecyclerView.LayoutManager layoutManager, RecyclerView.ItemDecoration itemDecoration) {
-            newItemsParams();
-            ItemsParams params = mSmartParams.itemsParams;
-            params.layoutManager = layoutManager;
-            params.itemDecoration = itemDecoration;
-            params.adapter = adapter;
             return this;
         }
 
@@ -596,7 +560,7 @@ public final class SmartDialog {
          * @param listener 字符计数器改变事件
          * @return Builder
          */
-        public Builder setInputCounter(int maxLen, OnInputCounterChangeListener listener) {
+        public Builder setInputCounter(int maxLen, OnInputChangeListener listener) {
             newInputParams();
             mSmartParams.inputParams.maxLen = maxLen;
             mSmartParams.inputCounterChangeListener = listener;

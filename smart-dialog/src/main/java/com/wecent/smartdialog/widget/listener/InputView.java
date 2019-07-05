@@ -4,9 +4,10 @@ import android.view.View;
 import android.widget.EditText;
 
 /**
- * Created by wecent on 2018/5/21.
+ * desc: InputView
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public interface InputView {
     EditText getInput();
 

@@ -8,8 +8,9 @@ import com.wecent.smartdialog.resource.values.SmartColor;
 import com.wecent.smartdialog.resource.values.SmartDimen;
 
 /**
- * 进度条参数
- * Created by wecent on 2017/3/31.
+ * desc: ProgressParams
+ * author: wecent
+ * date: 2018/3/30
  */
 public class ProgressParams implements Parcelable {
 

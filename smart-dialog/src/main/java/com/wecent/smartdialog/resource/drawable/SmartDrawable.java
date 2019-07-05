@@ -3,8 +3,9 @@ package com.wecent.smartdialog.resource.drawable;
 import android.graphics.drawable.ShapeDrawable;
 
 /**
- * 圆角
- * Created by wecent on 2017/3/29.
+ * desc: 圆角图片
+ * author: wecent
+ * date: 2018/3/29
  */
 public class SmartDrawable extends ShapeDrawable {
 

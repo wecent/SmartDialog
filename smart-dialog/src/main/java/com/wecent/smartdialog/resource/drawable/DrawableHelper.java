@@ -3,9 +3,10 @@ package com.wecent.smartdialog.resource.drawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 
 /**
- * Created by wecent on 2017/3/30.
+ * desc: DrawableHelper
+ * author: wecent
+ * date: 2018/3/29
  */
-
 class DrawableHelper {
 
     public static RoundRectShape getRoundRectShape(int leftTop, int rightTop, int rightBottom, int leftBottom) {

@@ -3,9 +3,10 @@ package com.wecent.smartdialog.callback;
 import com.wecent.smartdialog.params.MessageParams;
 
 /**
- * Created by wecent on 2017/3/30.
+ * desc: ConfigMessage
+ * author: wecent
+ * date: 2018/3/31
  */
-
 public interface ConfigMessage {
     void onConfig(MessageParams params);
 }

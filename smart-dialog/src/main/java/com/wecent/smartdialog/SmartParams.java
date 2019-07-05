@@ -20,15 +20,14 @@ import com.wecent.smartdialog.widget.listener.OnCreateBodyViewListener;
 import com.wecent.smartdialog.widget.listener.OnCreateMessageListener;
 import com.wecent.smartdialog.widget.listener.OnCreateTitleListener;
 import com.wecent.smartdialog.widget.listener.OnInputClickListener;
-import com.wecent.smartdialog.widget.listener.OnInputCounterChangeListener;
+import com.wecent.smartdialog.widget.listener.OnInputChangeListener;
 import com.wecent.smartdialog.widget.listener.OnItemsClickListener;
 
 /**
- * desc: .
- * author: wecent .
- * date: 2017/3/30 .
+ * desc:
+ * author: wecent
+ * date: 2018/3/30
  */
-
 public class SmartParams implements Parcelable {
 
     /**
@@ -81,7 +80,7 @@ public class SmartParams implements Parcelable {
     public OnCreateMessageListener createMessageListener;
     public OnCreateInputListener createInputListener;
     public OnCreateButtonListener createButtonListener;
-    public OnInputCounterChangeListener inputCounterChangeListener;
+    public OnInputChangeListener inputCounterChangeListener;
 
     public SmartParams() {
 

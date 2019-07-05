@@ -4,10 +4,10 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 
 /**
- * 按钮的背景，有点击效果
- * Created by wecent on 2017/3/30.
+ * desc: 按钮的背景，有点击效果
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public class ButtonDrawable extends StateListDrawable {
 
     public ButtonDrawable(int backgroundColor, int backgroundColorPress, int leftTopRadius

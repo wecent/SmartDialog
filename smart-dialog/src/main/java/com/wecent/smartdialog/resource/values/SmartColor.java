@@ -1,7 +1,9 @@
 package com.wecent.smartdialog.resource.values;
 
 /**
- * Created by wecent on 2017/3/29.
+ * desc: 颜色
+ * author: wecent
+ * date: 2018/3/29
  */
 public class SmartColor {
 

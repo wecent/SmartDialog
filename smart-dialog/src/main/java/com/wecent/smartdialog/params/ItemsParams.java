@@ -2,15 +2,13 @@ package com.wecent.smartdialog.params;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-
 import com.wecent.smartdialog.resource.values.SmartColor;
 import com.wecent.smartdialog.resource.values.SmartDimen;
 
 /**
- * items 内容参数
- * Created by wecent on 2017/3/30.
+ * desc: ItemsParams
+ * author: wecent
+ * date: 2018/3/30
  */
 public class ItemsParams implements Parcelable {
 
@@ -59,19 +57,6 @@ public class ItemsParams implements Parcelable {
      */
     public boolean isManualClose;
     /**
-     * RecyclerView 适配器
-     */
-    public RecyclerView.Adapter adapter;
-    /**
-     * RecyclerView 布局管理
-     */
-    public RecyclerView.LayoutManager layoutManager;
-    public int linearLayoutManagerOrientation = LinearLayoutManager.VERTICAL;
-    /**
-     * RecyclerView 分隔线
-     */
-    public RecyclerView.ItemDecoration itemDecoration;
-    /**
      * 列表与底部按钮的距离
      */
     public int bottomMargin = -1;
@@ -88,7 +73,6 @@ public class ItemsParams implements Parcelable {
         this.textSize = in.readInt();
         this.backgroundColorPress = in.readInt();
         this.isManualClose = in.readByte() != 0;
-        this.linearLayoutManagerOrientation = in.readInt();
         this.bottomMargin = in.readInt();
     }
 
@@ -107,7 +91,6 @@ public class ItemsParams implements Parcelable {
         dest.writeInt(this.textSize);
         dest.writeInt(this.backgroundColorPress);
         dest.writeByte(this.isManualClose ? (byte) 1 : (byte) 0);
-        dest.writeInt(this.linearLayoutManagerOrientation);
         dest.writeInt(this.bottomMargin);
     }
 }

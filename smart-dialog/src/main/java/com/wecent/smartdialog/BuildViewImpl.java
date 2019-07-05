@@ -9,7 +9,6 @@ import com.wecent.smartdialog.widget.BodyInputView;
 import com.wecent.smartdialog.widget.BodyItemsView;
 import com.wecent.smartdialog.widget.BodyProgressView;
 import com.wecent.smartdialog.widget.BodyTextView;
-import com.wecent.smartdialog.widget.ScaleLinearLayout;
 import com.wecent.smartdialog.widget.SmartDividerView;
 import com.wecent.smartdialog.widget.SmartMultipleButton;
 import com.wecent.smartdialog.widget.SmartSingleButton;
@@ -19,9 +18,10 @@ import com.wecent.smartdialog.widget.listener.InputView;
 import com.wecent.smartdialog.widget.listener.ItemsView;
 
 /**
- * Created by wecent on 2017/3/29.
+ * desc: BuildViewImpl
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public final class BuildViewImpl implements BuildView {
     private Context mContext;
     private SmartParams mParams;
@@ -43,7 +43,7 @@ public final class BuildViewImpl implements BuildView {
     @Override
     public View buildRoot() {
         if (mRoot == null) {
-            mRoot = new ScaleLinearLayout(mContext);
+            mRoot = new LinearLayout(mContext);
             mRoot.setOrientation(LinearLayout.VERTICAL);
         }
         return mRoot;
@@ -54,6 +54,10 @@ public final class BuildViewImpl implements BuildView {
         if (mSmartTitleView == null) {
             mSmartTitleView = new SmartTitleView(mContext, mParams);
             mRoot.addView(mSmartTitleView);
+            if (mParams.itemListener != null) {
+                SmartDividerView smartDividerView = new SmartDividerView(mContext, true);
+                mRoot.addView(smartDividerView);
+            }
         }
         return mSmartTitleView;
     }
@@ -87,11 +91,6 @@ public final class BuildViewImpl implements BuildView {
     public ItemsView buildItems() {
         if (mItemsView == null) {
             mItemsView = new BodyItemsView(mContext, mParams);
-            if (mParams.itemListener != null || mParams.itemsParams.adapter != null) {
-                SmartDividerView smartDividerView = new SmartDividerView(mContext);
-                smartDividerView.setVertical();
-                mRoot.addView(smartDividerView);
-            }
             mRoot.addView(mItemsView.getView());
         }
         return mItemsView;
@@ -141,8 +140,7 @@ public final class BuildViewImpl implements BuildView {
         if (mMultipleButton == null) {
             mMultipleButton = new SmartMultipleButton(mContext, mParams);
             if (!mMultipleButton.isEmpty()) {
-                SmartDividerView smartDividerView = new SmartDividerView(mContext);
-                smartDividerView.setVertical();
+                SmartDividerView smartDividerView = new SmartDividerView(mContext, true);
                 mRoot.addView(smartDividerView);
             }
             mRoot.addView(mMultipleButton.getView());

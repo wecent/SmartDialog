@@ -4,9 +4,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by wecent on 2018/6/13.
+ * desc: OnCreateTitleListener
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public interface OnCreateTitleListener {
     void onCreateTitle(ImageView titleIcon, TextView title, TextView subTitle);
 }

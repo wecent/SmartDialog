@@ -3,9 +3,10 @@ package com.wecent.smartdialog.callback;
 import com.wecent.smartdialog.params.ItemsParams;
 
 /**
- * Created by wecent on 2017/3/30.
+ * desc: ConfigItems
+ * author: wecent
+ * date: 2018/3/31
  */
-
 public interface ConfigItems {
     void onConfig(ItemsParams params);
 }

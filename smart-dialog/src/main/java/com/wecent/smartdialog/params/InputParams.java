@@ -10,8 +10,9 @@ import com.wecent.smartdialog.resource.values.SmartColor;
 import com.wecent.smartdialog.resource.values.SmartDimen;
 
 /**
- * 输入框参数
- * Created by wecent on 2017/3/31.
+ * desc: InputParams
+ * author: wecent
+ * date: 2018/3/30
  */
 public class InputParams implements Parcelable {
 

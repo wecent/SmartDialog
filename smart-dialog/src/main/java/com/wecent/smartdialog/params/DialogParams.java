@@ -8,8 +8,9 @@ import com.wecent.smartdialog.resource.values.SmartColor;
 import com.wecent.smartdialog.resource.values.SmartDimen;
 
 /**
- * 对话框参数
- * Created by wecent on 2017/3/30.
+ * desc: DialogParams
+ * author: wecent
+ * date: 2018/3/30
  */
 public class DialogParams implements Parcelable {
     public static final Creator<DialogParams> CREATOR = new Creator<DialogParams>() {

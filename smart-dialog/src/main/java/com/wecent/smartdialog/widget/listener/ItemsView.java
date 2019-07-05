@@ -3,9 +3,10 @@ package com.wecent.smartdialog.widget.listener;
 import android.view.View;
 
 /**
- * Created by wecent on 2018/4/18.
+ * desc: ItemsView
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public interface ItemsView {
     void refreshItems();
 

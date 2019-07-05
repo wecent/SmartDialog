@@ -12,10 +12,11 @@ import com.wecent.smartdialog.resource.drawable.SmartDrawable;
 import com.wecent.smartdialog.widget.listener.OnCreateMessageListener;
 
 /**
- * 对话框纯文本视图
- * Created by wecent on 2017/3/30.
+ * desc: Alert弹框提示文本
+ * author: wecent
+ * date: 2018/3/29
  */
-public final class BodyTextView extends ScaleTextView {
+public final class BodyTextView extends SmartTextView {
     private SmartParams mParams;
 
     public BodyTextView(Context context, SmartParams params) {

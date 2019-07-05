@@ -22,10 +22,11 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 /**
- * Created by wecent on 2017/3/31.
+ * desc: Alert弹框进度条
+ * author: wecent
+ * date: 2018/3/29
  */
-
-public final class BodyProgressView extends ScaleLinearLayout {
+public final class BodyProgressView extends LinearLayout {
     private ProgressParams mProgressParams;
     private ProgressBar mProgressBar;
     private Handler mViewUpdateHandler;
@@ -118,7 +119,7 @@ public final class BodyProgressView extends ScaleLinearLayout {
         addView(mProgressBar, layoutParams);
 
         //构建文本
-        final ScaleTextView textView = new ScaleTextView(getContext());
+        final SmartTextView textView = new SmartTextView(getContext());
         textView.setTextSize(mProgressParams.textSize);
         textView.setTextColor(mProgressParams.textColor);
         textView.setTypeface(textView.getTypeface(), mProgressParams.styleText);

@@ -3,9 +3,10 @@ package com.wecent.smartdialog.widget.listener;
 import android.view.View;
 
 /**
- * Created by wecent on 2018/6/13.
+ * desc: OnCreateBodyViewListener
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public interface OnCreateBodyViewListener {
     void onCreateBodyView(View view);
 }

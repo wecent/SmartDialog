@@ -1,33 +1,36 @@
 package com.wecent.smartdialog.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.wecent.smartdialog.SmartController;
 import com.wecent.smartdialog.SmartParams;
 import com.wecent.smartdialog.params.ButtonParams;
 import com.wecent.smartdialog.resource.drawable.ButtonDrawable;
-import com.wecent.smartdialog.scale.ScaleHelper;
 import com.wecent.smartdialog.widget.listener.ButtonView;
 import com.wecent.smartdialog.widget.listener.OnCreateButtonListener;
 
+
 /**
- * desc: 仿IOS SheetDialog弹框底部取消按钮 .
- * author: wecent .
- * date: 2017/3/17 .
+ * desc: Sheet弹框底部取消按钮
+ * author: wecent
+ * date: 2018/3/29
  */
-public final class SmartSingleButton extends ScaleLinearLayout implements SmartController.OnClickListener
+@SuppressLint("ViewConstructor")
+public final class SmartSingleButton extends LinearLayout implements SmartController.OnClickListener
         , ButtonView {
 
     private SmartParams mSmartParams;
     private ButtonParams mNegativeParams;
     private ButtonParams mPositiveParams;
     private ButtonParams mNeutralParams;
-    private ScaleTextView mNegativeButton;
-    private ScaleTextView mPositiveButton;
-    private ScaleTextView mNeutralButton;
+    private SmartTextView mNegativeButton;
+    private SmartTextView mPositiveButton;
+    private SmartTextView mNeutralButton;
 
     public SmartSingleButton(Context context, SmartParams params) {
         super(context);
@@ -124,12 +127,12 @@ public final class SmartSingleButton extends ScaleLinearLayout implements SmartC
     }
 
     private void createNegative() {
-        mNegativeButton = new ScaleTextView(getContext());
+        mNegativeButton = new SmartTextView(getContext());
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         //设置列表与按钮之间的上距离
         if (mNegativeParams.topMargin > 0) {
-            params.topMargin = ScaleHelper.scaleValue(mNegativeParams.topMargin);
+            params.topMargin = mNegativeParams.topMargin;
         }
         mNegativeButton.setLayoutParams(params);
         handleNegativeStyle();
@@ -137,17 +140,17 @@ public final class SmartSingleButton extends ScaleLinearLayout implements SmartC
     }
 
     private void createDivider() {
-        SmartDividerView smartDividerView = new SmartDividerView(getContext());
+        SmartDividerView smartDividerView = new SmartDividerView(getContext(), false);
         addView(smartDividerView);
     }
 
     private void createNeutral() {
-        mNeutralButton = new ScaleTextView(getContext());
+        mNeutralButton = new SmartTextView(getContext());
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         //设置列表与按钮之间的上距离
         if (mNeutralParams.topMargin > 0) {
-            params.topMargin = ScaleHelper.scaleValue(mNeutralParams.topMargin);
+            params.topMargin = mNeutralParams.topMargin;
         }
         mNeutralButton.setLayoutParams(params);
         handleNeutralStyle();
@@ -155,12 +158,12 @@ public final class SmartSingleButton extends ScaleLinearLayout implements SmartC
     }
 
     private void createPositive() {
-        mPositiveButton = new ScaleTextView(getContext());
+        mPositiveButton = new SmartTextView(getContext());
         LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1);
         //设置列表与按钮之间的上距离
         if (mPositiveParams.topMargin > 0) {
-            params.topMargin = ScaleHelper.scaleValue(mPositiveParams.topMargin);
+            params.topMargin = mPositiveParams.topMargin;
         }
         mPositiveButton.setLayoutParams(params);
         handlePositiveStyle();

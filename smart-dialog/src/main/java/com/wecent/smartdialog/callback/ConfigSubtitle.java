@@ -3,9 +3,10 @@ package com.wecent.smartdialog.callback;
 import com.wecent.smartdialog.params.SubtitleParams;
 
 /**
- * Created by wecent on 2018/4/12.
+ * desc: ConfigSubtitle
+ * author: wecent
+ * date: 2018/3/31
  */
-
 public interface ConfigSubtitle {
     void onConfig(SubtitleParams params);
 }

@@ -1,9 +1,11 @@
 package com.wecent.smartdialog.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.wecent.smartdialog.SmartController;
 import com.wecent.smartdialog.SmartParams;
@@ -13,19 +15,21 @@ import com.wecent.smartdialog.widget.listener.ButtonView;
 import com.wecent.smartdialog.widget.listener.OnCreateButtonListener;
 
 /**
- * 对话框确定按钮与取消的视图
- * Created by wecent on 2017/3/30.
+ * desc: Alert弹框确定与取消按钮
+ * author: wecent
+ * date: 2018/3/29
  */
-public class SmartMultipleButton extends ScaleLinearLayout implements SmartController.OnClickListener
+@SuppressLint("ViewConstructor")
+public class SmartMultipleButton extends LinearLayout implements SmartController.OnClickListener
         , ButtonView {
 
     private SmartParams mSmartParams;
     private ButtonParams mNegativeParams;
     private ButtonParams mPositiveParams;
     private ButtonParams mNeutralParams;
-    private ScaleTextView mNegativeButton;
-    private ScaleTextView mPositiveButton;
-    private ScaleTextView mNeutralButton;
+    private SmartTextView mNegativeButton;
+    private SmartTextView mPositiveButton;
+    private SmartTextView mNeutralButton;
 
     public SmartMultipleButton(Context context, SmartParams params) {
         super(context);
@@ -119,7 +123,7 @@ public class SmartMultipleButton extends ScaleLinearLayout implements SmartContr
     }
 
     private void createNegative() {
-        mNegativeButton = new ScaleTextView(getContext());
+        mNegativeButton = new SmartTextView(getContext());
         mNegativeButton.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1));
         handleNegativeStyle();
@@ -127,12 +131,12 @@ public class SmartMultipleButton extends ScaleLinearLayout implements SmartContr
     }
 
     private void createDivider() {
-        SmartDividerView smartDividerView = new SmartDividerView(getContext());
+        SmartDividerView smartDividerView = new SmartDividerView(getContext(), false);
         addView(smartDividerView);
     }
 
     private void createNeutral() {
-        mNeutralButton = new ScaleTextView(getContext());
+        mNeutralButton = new SmartTextView(getContext());
         mNeutralButton.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1));
         handleNeutralStyle();
@@ -140,7 +144,7 @@ public class SmartMultipleButton extends ScaleLinearLayout implements SmartContr
     }
 
     private void createPositive() {
-        mPositiveButton = new ScaleTextView(getContext());
+        mPositiveButton = new SmartTextView(getContext());
         mPositiveButton.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1));
         handlePositiveStyle();

@@ -7,9 +7,10 @@ import com.wecent.smartdialog.widget.listener.InputView;
 import com.wecent.smartdialog.widget.listener.ItemsView;
 
 /**
- * Created by wecent on 2017/3/29.
+ * desc: BuildView
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public interface BuildView {
     /**
      * 生成根布局

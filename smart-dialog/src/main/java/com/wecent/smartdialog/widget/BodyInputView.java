@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wecent.smartdialog.SmartController;
@@ -25,12 +26,13 @@ import static com.wecent.smartdialog.SmartController.BUTTON_POSITIVE;
 import static com.wecent.smartdialog.resource.values.SmartDimen.INPUT_COUNTER_TEXT_SIZE;
 
 /**
- * Created by wecent on 2017/3/31.
+ * desc: Alert弹框文本编辑
+ * author: wecent
+ * date: 2018/3/29
  */
-
-public final class BodyInputView extends ScaleRelativeLayout implements SmartController.OnClickListener, InputView {
-    private ScaleEditText mEditText;
-    private ScaleTextView mTvCounter;
+public final class BodyInputView extends RelativeLayout implements SmartController.OnClickListener, InputView {
+    private SmartEditText mEditText;
+    private SmartTextView mTvCounter;
     private SmartParams params;
 
     public BodyInputView(Context context, SmartParams params) {
@@ -81,7 +83,7 @@ public final class BodyInputView extends ScaleRelativeLayout implements SmartCon
         //有标题有按钮则不用考虑圆角
         else setBackgroundColor(backgroundColor);
 
-        mEditText = new ScaleEditText(context);
+        mEditText = new SmartEditText(context);
         mEditText.setId(android.R.id.input);
         int inputType = inputParams.inputType;
         if (inputType != InputType.TYPE_NULL) {
@@ -133,7 +135,7 @@ public final class BodyInputView extends ScaleRelativeLayout implements SmartCon
                         , inputParams.counterMargins[0]
                         , inputParams.counterMargins[1]);
             }
-            mTvCounter = new ScaleTextView(context);
+            mTvCounter = new SmartTextView(context);
             mTvCounter.setTextSize(INPUT_COUNTER_TEXT_SIZE);
             mTvCounter.setTextColor(inputParams.counterColor);
 
@@ -222,7 +224,7 @@ public final class BodyInputView extends ScaleRelativeLayout implements SmartCon
                 int currentLen = maxLen - chineseLength(defText);
                 if (params.inputCounterChangeListener != null) {
                     String counterText = params.inputCounterChangeListener
-                            .onCounterChange(maxLen, currentLen);
+                            .onChange(maxLen, currentLen);
                     mTvCounter.setText(counterText == null ? "" : counterText);
                 } else {
                     mTvCounter.setText(String.valueOf(currentLen));
@@ -257,7 +259,7 @@ public final class BodyInputView extends ScaleRelativeLayout implements SmartCon
             int currentLen = mMaxLen - chineseLength(editable.toString());
             if (params.inputCounterChangeListener != null) {
                 String counterText = params.inputCounterChangeListener
-                        .onCounterChange(mMaxLen, currentLen);
+                        .onChange(mMaxLen, currentLen);
                 mTvCounter.setText(counterText == null ? "" : counterText);
             } else {
                 mTvCounter.setText(String.valueOf(currentLen));

@@ -9,8 +9,9 @@ import com.wecent.smartdialog.resource.values.SmartColor;
 import com.wecent.smartdialog.resource.values.SmartDimen;
 
 /**
- * 副标题参数
- * Created by wecent on 2018/4/12.
+ * desc: SubtitleParams
+ * author: wecent
+ * date: 2018/3/30
  */
 public class SubtitleParams implements Parcelable {
 

@@ -1,5 +1,6 @@
 package com.wecent.smartdialog.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.widget.ImageView;
@@ -14,11 +15,12 @@ import com.wecent.smartdialog.resource.drawable.SmartDrawable;
 import com.wecent.smartdialog.widget.listener.OnCreateTitleListener;
 
 /**
- * desc: 仿IOS AlertDialog标题（包括标题和副标题） .
- * author: wecent .
- * date: 2017/3/27 .
+ * desc: Alert弹框标题
+ * author: wecent
+ * date: 2018/3/29
  */
-public final class SmartTitleView extends ScaleLinearLayout {
+@SuppressLint("ViewConstructor")
+public final class SmartTitleView extends LinearLayout {
 
     public SmartTitleView(Context context, SmartParams params) {
         super(context);
@@ -33,7 +35,7 @@ public final class SmartTitleView extends ScaleLinearLayout {
         TitleParams titleParams = params.titleParams;
         SubtitleParams subtitleParams = params.subtitleParams;
 
-        ScaleRelativeLayout titleLayout = new ScaleRelativeLayout(getContext());
+        RelativeLayout titleLayout = new RelativeLayout(getContext());
         titleLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT
                 , LayoutParams.WRAP_CONTENT));
 
@@ -54,7 +56,7 @@ public final class SmartTitleView extends ScaleLinearLayout {
         }
         titleLayout.addView(ivTitleIcon);
         //标题
-        final ScaleTextView tvTitle = new ScaleTextView(getContext());
+        final SmartTextView tvTitle = new SmartTextView(getContext());
         tvTitle.setId(android.R.id.title);
         RelativeLayout.LayoutParams layoutParamsTitle = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -70,9 +72,9 @@ public final class SmartTitleView extends ScaleLinearLayout {
         addView(titleLayout);
 
         //副标题
-        ScaleTextView tvSubtitle = null;
+        SmartTextView tvSubtitle = null;
         if (subtitleParams != null) {
-            tvSubtitle = new ScaleTextView(getContext());
+            tvSubtitle = new SmartTextView(getContext());
             setSubTitleBg(tvSubtitle, subtitleParams.backgroundColor, dialogParams.backgroundColor);
             tvSubtitle.setGravity(subtitleParams.gravity);
             if (subtitleParams.height != 0)
@@ -92,7 +94,7 @@ public final class SmartTitleView extends ScaleLinearLayout {
         }
     }
 
-    private void setTitleBg(ScaleRelativeLayout tv, SmartParams params, int tbg, int dbg, int radius) {
+    private void setTitleBg(RelativeLayout tv, SmartParams params, int tbg, int dbg, int radius) {
         //如果标题没有背景色，则使用默认色
         int bg = tbg != 0 ? tbg : dbg;
 
@@ -115,7 +117,7 @@ public final class SmartTitleView extends ScaleLinearLayout {
         }
     }
 
-    private void setSubTitleBg(ScaleTextView tv, int tbg, int dbg) {
+    private void setSubTitleBg(SmartTextView tv, int tbg, int dbg) {
         //如果标题没有背景色，则使用默认色
         int bg = tbg != 0 ? tbg : dbg;
 

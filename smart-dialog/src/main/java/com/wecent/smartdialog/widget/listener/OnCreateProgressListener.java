@@ -4,9 +4,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 /**
- * Created by wecent on 2018/6/13.
+ * desc: OnCreateProgressListener
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public interface OnCreateProgressListener {
     void onCreateProgressView(ProgressBar progressBar, TextView textView);
 }

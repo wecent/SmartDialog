@@ -22,7 +22,6 @@ import com.wecent.smartdialog.params.TitleParams;
 import com.wecent.smartdialog.resource.drawable.ButtonDrawable;
 import com.wecent.smartdialog.resource.values.SmartColor;
 import com.wecent.smartdialog.resource.values.SmartDimen;
-import com.wecent.smartdialog.scale.ScaleHelper;
 import com.wecent.smartdialog.widget.listener.ItemsView;
 import com.wecent.smartdialog.widget.listener.OnItemsClickListener;
 
@@ -30,10 +29,12 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by wecent on 2018/4/18.
+ * desc: Sheet弹框条目列表视图
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public final class BodyItemsView extends RecyclerView implements SmartController.OnClickListener, ItemsView {
+
     private Adapter mAdapter;
     private SmartParams mParams;
 
@@ -53,66 +54,27 @@ public final class BodyItemsView extends RecyclerView implements SmartController
         if (itemsParams.bottomMargin == -1) {
             itemsParams.bottomMargin = SmartDimen.BUTTON_ITEMS_MARGIN;
         }
-        layoutParams.bottomMargin = ScaleHelper.scaleValue(itemsParams.bottomMargin);
+        layoutParams.bottomMargin = itemsParams.bottomMargin;
         setLayoutParams(layoutParams);
+        setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        addItemDecoration(new LinearItemDecoration(new ColorDrawable(SmartColor.divider), itemsParams.dividerHeight));
 
-        if (itemsParams.layoutManager == null) {
-            itemsParams.layoutManager = new LinearLayoutManager(getContext()
-                    , itemsParams.linearLayoutManagerOrientation, false);
+        mAdapter = new ItemsAdapter(context, mParams);
+
+        TitleParams titleParams = params.titleParams;
+
+        int radius = mParams.dialogParams.radius;
+        //如果没有背景色，则使用默认色
+        int backgroundColor = itemsParams.backgroundColor != 0
+                ? itemsParams.backgroundColor : mParams.dialogParams.backgroundColor;
+
+        final ButtonDrawable RvBg = new ButtonDrawable(backgroundColor, backgroundColor
+                , titleParams != null ? 0 : radius, titleParams != null ? 0 : radius
+                , radius, radius);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            setBackground(RvBg);
         } else {
-            if (itemsParams.layoutManager instanceof GridLayoutManager) {
-                GridLayoutManager gridLayoutManager = (GridLayoutManager) itemsParams.layoutManager;
-                if (gridLayoutManager.getSpanCount() == 1) {
-                    itemsParams.layoutManager = new LinearLayoutManager(getContext()
-                            , itemsParams.linearLayoutManagerOrientation, false);
-                }
-            }
-        }
-        setLayoutManager(params.itemsParams.layoutManager);
-
-        ItemDecoration itemDecoration = itemsParams.itemDecoration;
-        if (itemsParams.layoutManager instanceof GridLayoutManager && itemDecoration == null) {
-            itemDecoration = new GridItemDecoration(new ColorDrawable(SmartColor.divider), itemsParams.dividerHeight);
-        } else if (itemsParams.layoutManager instanceof LinearLayoutManager && itemDecoration == null) {
-            itemDecoration = new LinearItemDecoration(new ColorDrawable(SmartColor.divider), itemsParams.dividerHeight);
-        }
-        addItemDecoration(itemDecoration);
-
-        mAdapter = params.itemsParams.adapter;
-        if (mAdapter == null) {
-            mAdapter = new ItemsAdapter(context, mParams);
-            if (itemsParams.layoutManager instanceof GridLayoutManager) {
-                final GridLayoutManager gridLayoutManager = (GridLayoutManager) itemsParams.layoutManager;
-                gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                    @Override
-                    public int getSpanSize(int position) {
-                        int itemCount = mAdapter.getItemCount();
-                        int spanCount = gridLayoutManager.getSpanCount();
-                        int mod = itemCount % spanCount;
-                        if (mod == 0 || position < itemCount - 1) {
-                            return 1;
-                        } else {
-                            return spanCount - mod + 1;
-                        }
-                    }
-                });
-            }
-        } else {
-            TitleParams titleParams = params.titleParams;
-
-            int radius = mParams.dialogParams.radius;
-            //如果没有背景色，则使用默认色
-            int backgroundColor = itemsParams.backgroundColor != 0
-                    ? itemsParams.backgroundColor : mParams.dialogParams.backgroundColor;
-
-            final ButtonDrawable RvBg = new ButtonDrawable(backgroundColor, backgroundColor
-                    , titleParams != null ? 0 : radius, titleParams != null ? 0 : radius
-                    , radius, radius);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                setBackground(RvBg);
-            } else {
-                setBackgroundDrawable(RvBg);
-            }
+            setBackgroundDrawable(RvBg);
         }
         setAdapter(mAdapter);
     }
@@ -375,23 +337,10 @@ public final class BodyItemsView extends RecyclerView implements SmartController
 
         @Override
         public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-            ScaleTextView textView = new ScaleTextView(mContext);
-            LayoutManager layoutManager = mItemsParams.layoutManager;
-            if (layoutManager instanceof LinearLayoutManager) {
-                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
-                if (linearLayoutManager.getOrientation() == LinearLayoutManager.HORIZONTAL) {
-                    textView.setLayoutParams(new LayoutParams(
-                            LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-                    textView.setPadding(10, 0, 10, 0);
-                } else {
-                    textView.setLayoutParams(new LayoutParams(
-                            LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-                    textView.setPadding(10, 0, 10, 0);
-                }
-            } else {
-                textView.setLayoutParams(new LayoutParams(
-                        LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-            }
+            SmartTextView textView = new SmartTextView(mContext);
+            textView.setLayoutParams(new LayoutParams(
+                    LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+            textView.setPadding(10, 0, 10, 0);
             textView.setTextSize(mItemsParams.textSize);
             textView.setTextColor(mItemsParams.textColor);
             textView.setHeight(mItemsParams.itemHeight);
@@ -401,18 +350,7 @@ public final class BodyItemsView extends RecyclerView implements SmartController
 
         @Override
         public void onBindViewHolder(Holder holder, int position) {
-            LayoutManager layoutManager = mItemsParams.layoutManager;
-            if (layoutManager instanceof GridLayoutManager) {
-                GridLayoutManager gridLayoutManager = (GridLayoutManager) layoutManager;
-                glBg(holder, position, gridLayoutManager.getSpanCount());
-            } else if (layoutManager instanceof LinearLayoutManager) {
-                LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
-                if (linearLayoutManager.getOrientation() == LinearLayoutManager.VERTICAL) {
-                    llvBg(holder, position);
-                } else {
-                    llhBg(holder, position);
-                }
-            }
+            llvBg(holder, position);
             holder.item.setText(String.valueOf(mItems.get(position).toString()));
         }
 
@@ -433,71 +371,6 @@ public final class BodyItemsView extends RecyclerView implements SmartController
             //middle
             else {
                 setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress, 0, 0, 0, 0));
-            }
-        }
-
-        //LinearLayoutManager Horizontal Background
-        private void llhBg(Holder holder, int position) {
-            if (position == 0) {
-                setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress, 0, 0, 0, mRadius));
-            } else if (position == getItemCount() - 1) {
-                setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress, 0, 0, mRadius, 0));
-            } else {
-                setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress, 0, 0, 0, 0));
-            }
-        }
-
-        //GridLayoutManager Background
-        private void glBg(Holder holder, int position, int spanCount) {
-            int itemCount = getItemCount();
-            int mod = itemCount % spanCount;
-
-            if (itemCount == 1) {
-                if (mTitleParams == null) {
-                    setItemBg(holder, bgItemAllRadius);
-                } else {
-                    setItemBg(holder, bgItemBottomRadius);
-                }
-            } else {
-                //bottom
-                if (itemCount <= spanCount || position >= itemCount - (mod == 0 ? spanCount : mod)) {
-                    int topRadius = itemCount <= spanCount && mTitleParams == null ? mRadius : 0;
-                    if (position % spanCount == 0) {//left
-                        if (mod == 1) {
-                            setItemBg(holder, bgItemBottomRadius);
-                        } else {
-                            setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress
-                                    , topRadius, 0, 0, mRadius));
-                        }
-                    } else {
-                        if (mod == 0) {//full
-                            if (position % spanCount == spanCount - 1) {//right
-                                setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress
-                                        , 0, topRadius, mRadius, 0));
-                            } else {//middle
-                                setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress, 0, 0, 0, 0));
-                            }
-                        } else {
-                            if (position % spanCount == mod - 1) {//right
-                                setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress
-                                        , 0, topRadius, mRadius, 0));
-                            } else {//middle
-                                setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress, 0, 0, 0, 0));
-                            }
-                        }
-                    }
-                } else {
-                    if (mTitleParams == null && position % spanCount == 0) {
-                        setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress
-                                , position < spanCount ? mRadius : 0, 0, 0, 0));
-                    } else if (mTitleParams == null && position % spanCount == spanCount - 1) {//right
-                        setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress
-                                , 0, position < spanCount ? mRadius : 0, 0, 0));
-                    } else {
-                        setItemBg(holder, new ButtonDrawable(mBackgroundColor, mBackgroundColorPress
-                                , 0, 0, 0, 0));
-                    }
-                }
             }
         }
 

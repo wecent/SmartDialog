@@ -14,9 +14,10 @@ import com.wecent.smartdialog.widget.listener.ItemsView;
 import com.wecent.smartdialog.widget.listener.OnItemsClickListener;
 
 /**
- * Created by wecent on 2017/3/29.
+ * desc: SmartController
+ * author: wecent
+ * date: 2018/3/30
  */
-
 public class SmartController {
 
     public static final int MSG_DISMISS_DIALOG = -1;

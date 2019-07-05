@@ -3,10 +3,10 @@ package com.wecent.smartdialog.resource.drawable;
 import android.graphics.drawable.GradientDrawable;
 
 /**
- * 输入框背景
- * Created by wecent on 2017/3/31.
+ * desc: 输入框背景
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public class InputDrawable extends GradientDrawable {
 
     public InputDrawable(int strokeWidth, int strokeColor, int backgroundColor, int radius) {

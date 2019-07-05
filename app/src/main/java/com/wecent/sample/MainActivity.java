@@ -93,11 +93,11 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                         .configDialog(new ConfigDialog() {
                             @Override
                             public void onConfig(DialogParams params) {
-                                params.radius = 3;
+                                params.radius = 28;
                             }
                         })
+                        .setWidth(0.8f)
                         .setTitle("标题")
-                        .setSubtitle("副标题")
                         .setMessage("这是一条来着未来的消息")
                         .setPositive("确定", null)
                         .configMessage(params ->
@@ -255,11 +255,8 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                 list.add("视频");
                 list.add("其他");
                 list.add("其他");
-                GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
                 new SmartDialog.Builder()
-                        .setTitle("标题")
-                        .setSubtitle("请从以下中选择照片的方式进行提交")
-                        .setItems(list, gridLayoutManager, (view13, position13) ->
+                        .setItems(list, (view13, position13) ->
                                 Toast.makeText(MainActivity.this, "点击了：" + list.get(position13), Toast.LENGTH_SHORT).show())
                         .setNegative("取消", null)
                         .show(getSupportFragmentManager());
@@ -268,14 +265,14 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
 //                dialogFragment = new SmartDialog.Builder()
 //                        .setProgressText("登录中...")
 //                        .setProgressStyle(ProgressParams.STYLE_SPINNER)
-////                        .setProgressDrawable(R.drawable.bg_progress_s)
+//                        .setProgressDrawable(R.drawable.bg_progress_s)
 //                        .show(getSupportFragmentManager());
-////                new Handler().postDelayed(new Runnable() {
-////                    @Override
-////                    public void run() {
-////                        dialogFragment.dismiss();
-////                    }
-////                }, 3000);
+//                new Handler().postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        dialogFragment.dismiss();
+//                    }
+//                }, 3000);
 //                break;
 //            case 7:
 //                builder = new SmartDialog.Builder();

@@ -3,9 +3,10 @@ package com.wecent.smartdialog.widget.listener;
 import android.view.View;
 
 /**
- * Created by wecent on 2018/4/18.
+ * desc: OnItemsClickListener
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public interface OnItemsClickListener {
     void onItemsClick(View view, int position);
 }

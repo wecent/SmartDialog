@@ -26,12 +26,12 @@ import android.widget.FrameLayout;
 
 import com.wecent.smartdialog.resource.drawable.SmartDrawable;
 import com.wecent.smartdialog.resource.values.SmartDimen;
-import com.wecent.smartdialog.scale.ScaleHelper;
 
 /**
- * Created by wecent on 2017/3/29.
+ * desc: BaseSmartDialog
+ * author: wecent
+ * date: 2018/3/29
  */
-
 public abstract class BaseSmartDialog extends DialogFragment {
 
     private static final String SAVED_GRAVITY = "smart:baseGravity";
@@ -198,9 +198,7 @@ public abstract class BaseSmartDialog extends DialogFragment {
         if (mPadding != null) {
             int[] padding = mPadding;
             wlp.width = WindowManager.LayoutParams.MATCH_PARENT;
-            window.getDecorView().setPadding(ScaleHelper.scaleValue(padding[0]), ScaleHelper
-                    .scaleValue(padding[1]), ScaleHelper.scaleValue(padding[2]), ScaleHelper
-                    .scaleValue(padding[3]));
+            window.getDecorView().setPadding(padding[0], padding[1], padding[2], padding[3]);
         }
         //动画
         if (mAnimStyle != 0) window.setWindowAnimations(mAnimStyle);
