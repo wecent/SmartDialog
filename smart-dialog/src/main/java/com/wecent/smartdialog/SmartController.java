@@ -65,16 +65,16 @@ public class SmartController {
 
     private void applyBody() {
         // 自定义
-        if (mParams.bodyViewId != 0) {
+        if (mParams.customViewId != 0) {
             View bodyView = mCreateView.buildCustom();
             ButtonView buttonView = mCreateView.buildMultipleButton();
             applyButton(buttonView, null);
             if (mParams.createBodyViewListener != null)
-                mParams.createBodyViewListener.onCreateBodyView(bodyView);
+                mParams.createBodyViewListener.onCreateCustom(bodyView);
         }
         // 消息
         else if (mParams.messageParams != null) {
-            mCreateView.buildText();
+            mCreateView.buildMessage();
             ButtonView buttonView = mCreateView.buildMultipleButton();
             applyButton(buttonView, null);
         }

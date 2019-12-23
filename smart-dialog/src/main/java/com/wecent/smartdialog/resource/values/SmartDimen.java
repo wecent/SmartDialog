@@ -92,18 +92,6 @@ public class SmartDimen {
      */
     public static int INPUT_COUNTER_TEXT_SIZE = 35;
     /**
-     * lottie动画下文字的边距
-     */
-    public static int[] LOTTIE_TEXT_MARGINS = {0, 60, 0, 30};
-    /**
-     * lottie动画的高度
-     */
-    public static int LOTTIE_HEIGHT = 270;
-    /**
-     * lottie动画宽度
-     */
-    public static int LOTTIE_WIDTH = 270;
-    /**
      * 加载框文字大小
      */
     public static int LOADING_TEXT_SIZE = 50;

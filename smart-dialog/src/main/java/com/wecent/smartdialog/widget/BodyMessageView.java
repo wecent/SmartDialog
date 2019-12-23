@@ -16,10 +16,10 @@ import com.wecent.smartdialog.widget.listener.OnCreateMessageListener;
  * author: wecent
  * date: 2018/3/29
  */
-public final class BodyTextView extends SmartTextView {
+public final class BodyMessageView extends SmartTextView {
     private SmartParams mParams;
 
-    public BodyTextView(Context context, SmartParams params) {
+    public BodyMessageView(Context context, SmartParams params) {
         super(context);
         this.mParams = params;
         init(params);

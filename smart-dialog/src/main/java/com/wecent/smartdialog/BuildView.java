@@ -38,7 +38,7 @@ public interface BuildView {
      *
      * @return 文本视图
      */
-    View buildText();
+    View buildMessage();
 
     /**
      * 刷新文本内容

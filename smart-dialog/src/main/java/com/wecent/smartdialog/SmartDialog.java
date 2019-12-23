@@ -29,7 +29,7 @@ import com.wecent.smartdialog.params.ProgressParams;
 import com.wecent.smartdialog.params.SubtitleParams;
 import com.wecent.smartdialog.params.TitleParams;
 import com.wecent.smartdialog.resource.values.SmartColor;
-import com.wecent.smartdialog.widget.listener.OnCreateBodyViewListener;
+import com.wecent.smartdialog.widget.listener.OnCreateCustomListener;
 import com.wecent.smartdialog.widget.listener.OnCreateButtonListener;
 import com.wecent.smartdialog.widget.listener.OnCreateInputListener;
 import com.wecent.smartdialog.widget.listener.OnCreateProgressListener;
@@ -53,9 +53,9 @@ public final class SmartDialog {
     }
 
     public DialogFragment create(SmartParams params) {
-        if (mDialog == null)
+        if (mDialog == null) {
             mDialog = AbsSmartDialog.newAbsSmartDialog(params);
-        else {
+        } else {
             if (mDialog.getDialog() != null && mDialog.getDialog().isShowing()) {
                 mDialog.refreshView();
             }
@@ -107,9 +107,9 @@ public final class SmartDialog {
         }
 
         /**
-         * 设置对话框点击外部关闭
+         * 设置对话框是否允许点击外部关闭
          *
-         * @param cancel true允许
+         * @param cancel 否允许点
          * @return this Builder
          */
         public Builder setCanceledOnTouchOutside(boolean cancel) {
@@ -118,7 +118,7 @@ public final class SmartDialog {
         }
 
         /**
-         * 设置对话框返回键关闭
+         * 设置对话框返回键是否
          *
          * @param cancel true允许
          * @return this Builder
@@ -472,27 +472,21 @@ public final class SmartDialog {
             return this;
         }
 
-        /**
-         * 设置自定义等待框视图
-         *
-         * @param bodyViewId resLayoutId
-         * @param listener   listener
-         * @return Builder
-         */
-        public Builder setBodyView(@LayoutRes int bodyViewId, OnCreateBodyViewListener listener) {
-            mSmartParams.bodyViewId = bodyViewId;
-            mSmartParams.createBodyViewListener = listener;
-            return this;
-        }
-
         public Builder setOnCreateProgressListener(OnCreateProgressListener listener) {
             mSmartParams.createProgressListener = listener;
             return this;
         }
 
-        public Builder setInputText(@NonNull String text) {
-            newInputParams();
-            mSmartParams.inputParams.text = text;
+        /**
+         * 设置自定义视图
+         *
+         * @param customViewId resLayoutId
+         * @param listener     listener
+         * @return Builder
+         */
+        public Builder setCustomView(@LayoutRes int customViewId, OnCreateCustomListener listener) {
+            mSmartParams.customViewId = customViewId;
+            mSmartParams.createCustomListener = listener;
             return this;
         }
 
@@ -514,6 +508,12 @@ public final class SmartDialog {
             newInputParams();
             mSmartParams.inputParams.text = text;
             mSmartParams.inputParams.hintText = hint;
+            return this;
+        }
+
+        public Builder setInputText(@NonNull String text) {
+            newInputParams();
+            mSmartParams.inputParams.text = text;
             return this;
         }
 

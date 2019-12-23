@@ -201,6 +201,7 @@ public final class BodyProgressView extends LinearLayout {
      * 循环向上转型,获取类的DeclaredField.
      */
     @SuppressWarnings("unchecked")
+
     protected static Field getDeclaredField(final Class clazz, final String fieldName) {
         for (Class superClass = clazz; superClass != Object.class; superClass = superClass
                 .getSuperclass()) {

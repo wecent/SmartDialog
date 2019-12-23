@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import com.wecent.smartdialog.widget.BodyInputView;
 import com.wecent.smartdialog.widget.BodyItemsView;
 import com.wecent.smartdialog.widget.BodyProgressView;
-import com.wecent.smartdialog.widget.BodyTextView;
+import com.wecent.smartdialog.widget.BodyMessageView;
 import com.wecent.smartdialog.widget.SmartDividerView;
 import com.wecent.smartdialog.widget.SmartMultipleButton;
 import com.wecent.smartdialog.widget.SmartSingleButton;
@@ -23,11 +23,12 @@ import com.wecent.smartdialog.widget.listener.ItemsView;
  * date: 2018/3/29
  */
 public final class BuildViewImpl implements BuildView {
+
     private Context mContext;
     private SmartParams mParams;
     private LinearLayout mRoot;
     private SmartTitleView mSmartTitleView;
-    private BodyTextView mBodyTextView;
+    private BodyMessageView mBodyTextView;
     private ItemsView mItemsView;
     private BodyProgressView mBodyProgressView;
     private InputView mBodyInputView;
@@ -65,7 +66,7 @@ public final class BuildViewImpl implements BuildView {
     @Override
     public View buildCustom() {
         if (mCustomView == null) {
-            View bodyView = LayoutInflater.from(mContext).inflate(mParams.bodyViewId, mRoot, false);
+            View bodyView = LayoutInflater.from(mContext).inflate(mParams.customViewId, mRoot, false);
             this.mCustomView = bodyView;
             mRoot.addView(mCustomView);
         }
@@ -73,9 +74,9 @@ public final class BuildViewImpl implements BuildView {
     }
 
     @Override
-    public View buildText() {
+    public View buildMessage() {
         if (mBodyTextView == null) {
-            mBodyTextView = new BodyTextView(mContext, mParams);
+            mBodyTextView = new BodyMessageView(mContext, mParams);
             mRoot.addView(mBodyTextView);
         }
         return mBodyTextView;

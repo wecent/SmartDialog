@@ -16,7 +16,7 @@ import com.wecent.smartdialog.params.TitleParams;
 import com.wecent.smartdialog.widget.listener.OnCreateButtonListener;
 import com.wecent.smartdialog.widget.listener.OnCreateInputListener;
 import com.wecent.smartdialog.widget.listener.OnCreateProgressListener;
-import com.wecent.smartdialog.widget.listener.OnCreateBodyViewListener;
+import com.wecent.smartdialog.widget.listener.OnCreateCustomListener;
 import com.wecent.smartdialog.widget.listener.OnCreateMessageListener;
 import com.wecent.smartdialog.widget.listener.OnCreateTitleListener;
 import com.wecent.smartdialog.widget.listener.OnInputClickListener;
@@ -73,8 +73,8 @@ public class SmartParams implements Parcelable {
     public ProgressParams progressParams;
     public InputParams inputParams;
     public ButtonParams neutralParams;
-    public int bodyViewId;
-    public OnCreateBodyViewListener createBodyViewListener;
+    public int customViewId;
+    public OnCreateCustomListener createCustomListener;
     public OnCreateProgressListener createProgressListener;
     public OnCreateTitleListener createTitleListener;
     public OnCreateMessageListener createMessageListener;
@@ -103,7 +103,7 @@ public class SmartParams implements Parcelable {
         dest.writeParcelable(this.progressParams, flags);
         dest.writeParcelable(this.inputParams, flags);
         dest.writeParcelable(this.neutralParams, flags);
-        dest.writeInt(this.bodyViewId);
+        dest.writeInt(this.customViewId);
     }
 
     protected SmartParams(Parcel in) {
@@ -117,7 +117,7 @@ public class SmartParams implements Parcelable {
         this.progressParams = in.readParcelable(ProgressParams.class.getClassLoader());
         this.inputParams = in.readParcelable(InputParams.class.getClassLoader());
         this.neutralParams = in.readParcelable(ButtonParams.class.getClassLoader());
-        this.bodyViewId = in.readInt();
+        this.customViewId = in.readInt();
     }
 
     public static final Creator<SmartParams> CREATOR = new Creator<SmartParams>() {

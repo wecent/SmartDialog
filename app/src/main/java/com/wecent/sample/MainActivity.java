@@ -17,8 +17,10 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.wecent.smartdialog.SmartDialog;
 import com.wecent.smartdialog.callback.ConfigDialog;
 import com.wecent.smartdialog.callback.ConfigItems;
+import com.wecent.smartdialog.callback.ConfigMessage;
 import com.wecent.smartdialog.params.DialogParams;
 import com.wecent.smartdialog.params.ItemsParams;
+import com.wecent.smartdialog.params.MessageParams;
 import com.wecent.smartdialog.resource.values.SmartDimen;
 import com.wecent.smartdialog.widget.listener.OnItemsClickListener;
 
@@ -97,11 +99,11 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                             }
                         })
                         .setWidth(0.8f)
-                        .setTitle("标题")
+//                        .setTitle("标题")
                         .setMessage("这是一条来着未来的消息")
-                        .setPositive("确定", null)
                         .configMessage(params ->
-                            params.padding = new int[]{100, 0, 100, 50})
+                                params.padding = new int[]{100, 50, 100, 50})
+                        .setPositive("确定", null)
 //                        .setOnShowListener(dialog ->
 //                                Toast.makeText(MainActivity.this, "显示了！", Toast.LENGTH_SHORT).show())
 //                        .setOnCancelListener(dialog ->
@@ -261,7 +263,6 @@ public class MainActivity extends AppCompatActivity implements BaseQuickAdapter.
                         .setNegative("取消", null)
                         .show(getSupportFragmentManager());
                 break;
-
 //            case 6:
 //                dialogFragment = new SmartDialog.Builder()
 //                        .setProgressText("登录中...")
